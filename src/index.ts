@@ -92,7 +92,11 @@ if (LIVE) {
   console.log('FILEWATCHER -> Monitoring the following glob for changes:', SITES_GLOB);
   watcher.on('change', async (path: string) => {
     console.log('FILEWATCHER -> Site configurations changed, reloading routers');
-    reloadRouters();    
+		try {
+    	reloadRouters();    
+		} catch(err) {
+			console.error('Failed to reload routers:', err);
+		}
   });
 }
 
