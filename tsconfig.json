@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es2017"],
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": true,
+    "noImplicitReturns": true,
+    "pretty": true,
+    "strict": true,
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "rootDir": "src",
+    "outDir": "build",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@scvo/router": [ "./node_modules/@scvo/router" ]
+    }
+  },
+  "include": [
+    "src/*.ts",
+    "src/**/*.ts",
+    "test/*.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "node_modules/@google-cloud/firestore/types/*.d.ts",
+    "node_modules/@firebase-admin/lib/index.d.ts",
+    "node_modules/**/*.ts"
+  ]
+}
