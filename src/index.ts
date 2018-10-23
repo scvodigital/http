@@ -4,6 +4,7 @@
  */
 // Node Imports
 import * as Http from 'http';
+import * as Https from 'https';
 import * as Url from 'url';
 import * as Querystring from 'url';
 import * as Path from 'path';
@@ -93,7 +94,7 @@ if (LIVE) {
   watcher.on('change', async (path: string) => {
     console.log('FILEWATCHER -> Site configurations changed, reloading routers');
 		try {
-    	reloadRouters();    
+    	await reloadRouters();    
 		} catch(err) {
 			console.error('Failed to reload routers:', err);
 		}
@@ -303,11 +304,26 @@ function getRequestSiteName(request: Http.IncomingMessage) {
 /*
  * Create and setup our HTTP server instance
  */
-const server = Http.createServer(requestHandler);
-server.listen(HTTP_PORT, (err: Error) => {
-  if (err) {
-    console.error('Could not start our server on port:', HTTP_PORT, err);
-  } else {
-    console.log('Listening on port:', HTTP_PORT);
-  }
-});
+if (LIVE) {
+  const server = Http.createServer(requestHandler);
+  server.listen(HTTP_PORT, (err: Error) => {
+    if (err) {
+      console.error('Could not start our server on port:', HTTP_PORT, err);
+    } else {
+      console.log('Listening on port:', HTTP_PORT);
+    }
+  });
+} else {
+  const options: Https.ServerOptions = { 
+    key: Fs.readFileSync(Path.join(__dirname, '../test-cert/_wildcard.local-key.pem')),
+    cert: Fs.readFileSync(Path.join(__dirname, '../test-cert/_wildcard.local.pem'))
+  };
+  const server = Https.createServer(options, requestHandler);
+  server.listen(HTTP_PORT, (err: Error) => {
+    if (err) {
+      console.error('Could not start our secure server on port:', HTTP_PORT, err);
+    } else {
+      console.log('Listening securely on port:', HTTP_PORT);
+    }
+  });
+}
