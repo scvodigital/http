@@ -33,10 +33,10 @@ require('source-map-support').install();
 // Router Imports
 import {
   Router, RouterConfiguration, RouterRequest, RouterResponse, 
-  HttpVerb, RendererHandlebars, TaskElasticsearch, TaskMySQL, 
-  TaskRedirect, TaskRenderLayout, TaskRequest, TaskRender, 
-  TaskFirebaseAuth, TaskFirebaseRtbGet, TaskFirebaseRtbSet, 
-  TaskTransform, TaskMailgun
+  HttpVerb, RendererHandlebars, RendererJsone, TaskElasticsearch, 
+  TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest, 
+  TaskRender, TaskFirebaseAuth, TaskFirebaseRtbGet, 
+  TaskFirebaseRtbSet, TaskTransform, TaskMailgun, TaskGeneratePdf
 } from '@scvo/router';
 /**
  * END: Node imports
@@ -62,7 +62,7 @@ const SITES_GLOB: string = Path.join(CONFIG.localSitesDir, '**/*-site.json')
  * @region
  */
 // Setup Firebase apps
-const firebaseApps: Map<Firebase.app.App> = {};
+const firebaseApps: { [name: string]: Firebase.app.App } = {};
 for (const [name, config] of Object.entries(CONFIG.firebaseAccounts)) {
   firebaseApps[name] = Firebase.initializeApp({
     databaseURL: config.databaseURL,
@@ -144,7 +144,8 @@ async function reloadRouters() {
 
     for (const [name, config] of Object.entries(sites)) {
       const renderers = {
-        handlebars: createHandlebarsRenderer(config.metaData.handlebars.partials)
+        handlebars: createHandlebarsRenderer(config.metaData.handlebars.partials),
+        jsone: new RendererJsone()
       };
       for (const domain of config.domains) {
         domainMap[domain] = name;
@@ -180,6 +181,14 @@ function createTaskModules(): Map<any> {
     firebaseAuth: new TaskFirebaseAuth(firebaseApps),
     firebaseRtbGet: new TaskFirebaseRtbGet(firebaseApps),
     firebaseRtbSet: new TaskFirebaseRtbSet(firebaseApps),
+    generatePdf: new TaskGeneratePdf({
+      Roboto: {
+        normal: Path.resolve(__dirname, '../fonts/Roboto-Regular.ttf'),
+        bold: Path.resolve(__dirname, '../fonts/Roboto-Medium.ttf'),
+        italics: Path.resolve(__dirname, '../fonts/Roboto-Italic.ttf'),
+        bolditalics: Path.resolve(__dirname, '../fonts/Roboto-MediumItalic.ttf')
+      }
+    }),
     transform: new TaskTransform({ querystring: Querystring, url: Url }),
     mailgun: new TaskMailgun(CONFIG.mailgunAccounts),
     request: new TaskRequest()
