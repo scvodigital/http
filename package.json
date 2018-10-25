@@ -49,6 +49,7 @@
     "firebase-admin": "^6.0.0",
     "globby": "^8.0.1",
     "handlebars": "^4.0.12",
+    "is-gzip": "^2.0.0",
     "json-stringify-safe": "^5.0.1",
     "markdown": "^0.5.0",
     "mime": "^2.3.1",

@@ -22,10 +22,11 @@ import * as Globby from 'globby';
 import * as Firebase from 'firebase-admin';
 const HbsFactory = require('clayhandlebars');
 const Handlebars = require('handlebars');
-import * as chokidar from 'chokidar';
-const stringify = require('json-stringify-safe');
-import * as mime from 'mime';
+import * as Chokidar from 'chokidar';
+const Stringify = require('json-stringify-safe');
+import * as Mime from 'mime';
 import * as Cookie from 'cookie';
+const IsGzip = require('is-gzip');
 
 require('source-map-support').install();
 
@@ -89,7 +90,7 @@ if (LIVE) {
     await reloadRouters();
   });
 } else {
-  const watcher = chokidar.watch(SITES_GLOB);
+  const watcher = Chokidar.watch(SITES_GLOB);
   console.log('FILEWATCHER -> Monitoring the following glob for changes:', SITES_GLOB);
   watcher.on('change', async (path: string) => {
     console.log('FILEWATCHER -> Site configurations changed, reloading routers');
@@ -204,12 +205,20 @@ const assetsRequestHandler = async (request: Http.IncomingMessage, response: Htt
     const path = Path.join(CONFIG.localSitesDir, siteName, url || '');
     console.log('Getting asset:', path); 
     const stat = Fs.statSync(path);
-    const contentType = mime.getType(path) || 'text/plain';
-    
-    response.writeHead(200, {
+    const contentType = Mime.getType(path) || 'text/plain';
+    const gzipped = IsGzip(Fs.readFileSync(path));
+
+    const head: any = {
       'Content-Type': contentType,
       'Content-Length': stat.size
-    });
+    };
+
+    if (gzipped) {
+      console.log('Gzipped:', path);
+      head['Content-Encoding'] = 'gzip';
+    }
+
+    response.writeHead(200, head);
 
     Fs.createReadStream(path).pipe(response);
   } catch(err) {
@@ -217,7 +226,7 @@ const assetsRequestHandler = async (request: Http.IncomingMessage, response: Htt
       console.error('Failed to get asset', err, request.url);
     }
     response.statusCode = 404;
-    response.end(stringify(err, null, 4));
+    response.end(Stringify(err, null, 4));
   }
 }
 
@@ -276,7 +285,7 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     console.error('Failed to handle router request', err);
     response.setHeader('content-type', 'application/json');
     response.statusCode = 500;
-    response.end(stringify(err, null, 4));
+    response.end(Stringify(err, null, 4));
   }
 };
 
