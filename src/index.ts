@@ -15,6 +15,7 @@ import { exec as Exec } from 'child_process'
 import { CONFIG } from './config';
 import { Map } from './interfaces';
 import { Helpers } from './helpers';
+import { JsoneHelpers } from './jsone-helpers'; 
 import { Err as Error } from './err';
 
 // External Imports
@@ -145,7 +146,7 @@ async function reloadRouters() {
     for (const [name, config] of Object.entries(sites)) {
       const renderers = {
         handlebars: createHandlebarsRenderer(config.metaData.handlebars.partials),
-        jsone: new RendererJsone()
+        jsone: new RendererJsone(JsoneHelpers)
       };
       for (const domain of config.domains) {
         domainMap[domain] = name;
