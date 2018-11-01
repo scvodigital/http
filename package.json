@@ -40,7 +40,7 @@
   "dependencies": {
     "@elastic/datemath": "^4.0.2",
     "@scvo/json-inc": "^0.0.15",
-    "@scvo/router": "^1.2.43",
+    "@scvo/router": "^1.2.44",
     "arr-diff": "^4.0.0",
     "chokidar": "^2.0.4",
     "clayhandlebars": "^3.2.6",
