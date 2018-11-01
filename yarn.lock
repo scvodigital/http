@@ -209,10 +209,15 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.44":
-  version "1.2.44"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.44.tgz#afa86567d4be4799f9d3d65cfd00aa476d5e53c0"
+"@scvo/router@^1.2.45":
+  version "1.2.45"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.45.tgz#549db787102ead8b3e04505616e13de5ac0bca62"
   dependencies:
+    "@types/elasticsearch" "^5.0.24"
+    "@types/handlebars" "^4.0.38"
+    "@types/mysql" "^2.15.5"
+    "@types/request-promise-native" "^1.0.15"
+    "@types/route-parser" "^0.1.1"
     ajv "^6.5.0"
     date-fns "^1.29.0"
     deep-extend "^0.6.0"
@@ -248,6 +253,10 @@
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.3.1.tgz#720a756ea8e760a258708b52441bd341f1ef4296"
 
+"@types/elasticsearch@^5.0.24":
+  version "5.0.28"
+  resolved "https://registry.yarnpkg.com/@types/elasticsearch/-/elasticsearch-5.0.28.tgz#0e4cdf7d9c9a3fe901c0da4fb9ad824c6d3b4091"
+
 "@types/events@*":
   version "1.2.0"
   resolved "http://registry.npmjs.org/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
@@ -280,6 +289,10 @@
     "@types/node" "*"
     "@types/request" "*"
 
+"@types/handlebars@^4.0.38":
+  version "4.0.39"
+  resolved "https://registry.yarnpkg.com/@types/handlebars/-/handlebars-4.0.39.tgz#961fb54db68030890942e6aeffe9f93a957807bd"
+
 "@types/json-stringify-safe@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@types/json-stringify-safe/-/json-stringify-safe-5.0.0.tgz#df34d054419d39323a3730966bacba02ac5e474e"
@@ -300,6 +313,12 @@
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
 
+"@types/mysql@^2.15.5":
+  version "2.15.5"
+  resolved "https://registry.yarnpkg.com/@types/mysql/-/mysql-2.15.5.tgz#6d75afb5cc018c9d66b2f37a046924e397f85430"
+  dependencies:
+    "@types/node" "*"
+
 "@types/node@*", "@types/node@^10.1.0", "@types/node@^10.11.7":
   version "10.11.7"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.7.tgz#0e75ca9357d646ca754016ca1d68a127ad7e7300"
@@ -312,6 +331,12 @@
   version "9.6.35"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.35.tgz#197dd535c094362a7c95f0b78f07583d6681ed26"
 
+"@types/request-promise-native@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@types/request-promise-native/-/request-promise-native-1.0.15.tgz#5b3369fc6aaf9e7fef7b6b688aef4c5759623e16"
+  dependencies:
+    "@types/request" "*"
+
 "@types/request@*":
   version "2.47.1"
   resolved "https://registry.yarnpkg.com/@types/request/-/request-2.47.1.tgz#25410d3afbdac04c91a94ad9efc9824100735824"
@@ -320,6 +345,10 @@
     "@types/form-data" "*"
     "@types/node" "*"
     "@types/tough-cookie" "*"
+
+"@types/route-parser@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@types/route-parser/-/route-parser-0.1.1.tgz#24b69588c68249f695122c230e547d3d6c8be095"
 
 "@types/tough-cookie@*":
   version "2.3.3"
