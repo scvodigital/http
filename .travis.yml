@@ -30,9 +30,9 @@ before_deploy:
   - gcloud auth activate-service-account --key-file app-engine-service-account.json
   - gcloud beta app update --split-health-checks --project scvo-net
   - gcloud config set project scvo-net
-  - gcloud config set timeout 1200
-  - gcloud config set build_timeout 1200
-  - gcloud config set cloud_build_timeout 1200
+  - gcloud config set builds/timeout 1200
+  - gcloud config set container/build_timeout 1200
+  - gcloud config set app/cloud_build_timeout 1200
 #  - gcloud config set app/use_deprecated_preparation True
 
 deploy:
