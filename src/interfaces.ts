@@ -5,6 +5,7 @@ export interface Config {
   defaultHostname: string;
   defaultHttpPort: number;
   localSitesDir: string;
+  firebasePath: string;
   serviceAccounts: Map<ServiceAccount>;
   salesforceAccounts: Map<any>;
   firebaseAccounts: Map<FirebaseAccount>;

@@ -51,7 +51,7 @@ import {
  */
 const HTTP_PORT: number = Number(process.env.PORT) || CONFIG.defaultHttpPort;
 const LIVE: boolean = !!process.env.GAE_SERVICE;
-const FIREBASE_SITES_PATH: string = '/contexts/';
+const FIREBASE_SITES_PATH: string = CONFIG.firebasePath;
 const SITES_GLOB: string = Path.join(CONFIG.localSitesDir, '**/*-site.json')
 /**
  * END: Application constants
