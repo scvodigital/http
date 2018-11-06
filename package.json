@@ -8,7 +8,7 @@
     "start": "npm run build; node build/index.js",
     "dev": "npm run build && node --inspect build/index.js",
     "build": "npm run build-clean && npm run build-typescript",
-    "build-clean": "rm -rf build && mkdir build",
+    "build-clean": "rm -rf build && mkdir build && rm node_modules/@google-cloud/firestore/types/*",
     "build-typescript": "./node_modules/.bin/tsc"
   },
   "repository": {

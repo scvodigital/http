@@ -62,3 +62,5 @@ jspm_packages/
 
 src/config.ts
 build/
+app-engine-service-account.json
+secrets.tar
