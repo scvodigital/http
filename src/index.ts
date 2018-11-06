@@ -27,6 +27,7 @@ import * as Chokidar from 'chokidar';
 const Stringify = require('json-stringify-safe');
 import * as Mime from 'mime';
 import * as Cookie from 'cookie';
+import * as Pako from 'pako';
 const IsGzip = require('is-gzip');
 
 require('source-map-support').install();
@@ -246,6 +247,12 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
       await reloadRouters();
     }
 
+    if (request.url === '/favicon.ico') {
+      response.end('');
+      response.statusCode = 200;
+      return;
+    }
+
     if (!routers) {
       response.end('Routers could not be loaded');
       response.statusCode = 500;
@@ -288,12 +295,31 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
       }
     }
 
-    response.setHeader('content-type', routerResponse.contentType);
-    response.statusCode = routerResponse.statusCode;
-    response.end(routerResponse.body);
+    let body: any = {};
+    let contentType = 'text/html';
+    if (typeof routerResponse.body === 'string') {
+      contentType = routerResponse.contentType || 'text/html';
+      body = routerResponse.body;
+    } else {
+      contentType = 'application/json';
+      body = JSON.stringify(routerResponse.body);
+    }
+
+    body = Pako.gzip(body);
+    const bodyBuffer = Buffer.from(body);
+    response.setHeader('Content-Encoding', 'gzip');
+    response.setHeader('Content-Length', bodyBuffer.length);
+    if (contentType.indexOf('charset') > -1) {
+      contentType = contentType.substr(0, contentType.indexOf(';'));
+    }
+    contentType += '; charset=x-user-defined-binary';
+    response.setHeader('Content-Type', contentType);
+    response.statusCode = routerResponse.statusCode || 200;
+
+    response.end(bodyBuffer);
   } catch(err) {
     console.error('Failed to handle router request', err);
-    response.setHeader('content-type', 'application/json');
+    response.setHeader('Content-Type', 'application/json');
     response.statusCode = 500;
     response.end(Stringify(err, null, 4));
   }

@@ -331,6 +331,10 @@
   version "9.6.35"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.35.tgz#197dd535c094362a7c95f0b78f07583d6681ed26"
 
+"@types/pako@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/pako/-/pako-1.0.0.tgz#eaae8364d1b7f752e263bc3fd68dfec98e6136c5"
+
 "@types/request-promise-native@^1.0.15":
   version "1.0.15"
   resolved "https://registry.yarnpkg.com/@types/request-promise-native/-/request-promise-native-1.0.15.tgz#5b3369fc6aaf9e7fef7b6b688aef4c5759623e16"
@@ -2582,6 +2586,10 @@ pac-resolver@^3.0.0:
 pako@^0.2.5:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
+
+pako@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
 
 pascalcase@^0.1.1:
   version "0.1.1"
