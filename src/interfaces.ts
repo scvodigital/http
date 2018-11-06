@@ -2,7 +2,7 @@ import * as Firebase from 'firebase-admin';
 
 export interface Config {
   defaultFirebaseAccount: string;
-  defaultHostname: string;
+  defaultSiteName: string;
   defaultHttpPort: number;
   localSitesDir: string;
   firebasePath: string;

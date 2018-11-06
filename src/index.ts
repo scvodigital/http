@@ -204,6 +204,14 @@ function createTaskModules(): Map<any> {
 const requestHandler = async (request: Http.IncomingMessage, response: Http.ServerResponse) => {
   if (request.url && request.url.startsWith('/assets/')) {
     await assetsRequestHandler(request, response);
+  } else if (request.url && request.url.startsWith('/readiness_check')) {
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/plain');
+    response.end('Readiness check, OK!'); 
+  } else if (request.url && request.url.startsWith('/liveness_check')) {
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/plain');
+    response.end('Liveness check, OK!'); 
   } else {
     await routerRequestHandler(request, response);
   }
@@ -341,7 +349,8 @@ function getRequestSiteName(request: Http.IncomingMessage) {
     }
     return siteName;
   } catch(err) {
-    throw new Error('Failed to get site name for host: ' + hostname, err);
+    //throw new Error('Failed to get site name for host: ' + hostname, err);
+    return CONFIG.defaultSiteName;
   }
 }
 
