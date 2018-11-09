@@ -342,6 +342,7 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     }
 
     // Get some properties from the request to create our router request object
+    const secure = request.headers.hasOwnProperty('X-Forwarded-Proto') ? request.headers['X-Forwarded-Proto'] === 'https' : (request.connection as any).encrypted || true;
     const host = request.headers.host as string || 'localhost';
     const hostname = host.split(':')[0];
     let fullUrl = 'https://' + host + request.url;
@@ -350,8 +351,8 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     }
 
     // If the request is not secure, redirect to HTTPS url generated above
-    if (!(request.socket as any).encrypted) {
-      console.log('Unecrypted:', fullUrl, request.socket);
+    if (!secure) {
+      console.log('Unecrypted:', fullUrl, (request.connection as any).encrypted || 'No connection.encrypted property', request.headers);
       //response.statusCode = 301;
       //response.setHeader('Location', fullUrl);
       //response.end();
