@@ -4,48 +4,34 @@ dispatch:
 
   - url: "emailer.scvo.net/*"
     service: scvo-frontend
-
   - url: "scvo.org/*"
     service: scvo-frontend
-
   - url: "scvo.org.uk/*"
     service: scvo-frontend
-
   - url: "goodmoves.com/*"
     service: scvo-frontend
-
-  - url: "test.goodmoves.com/*"
-    service: router
-
   - url: "goodmoves.scot/*"
     service: scvo-frontend
-
   - url: "goodmoves.be/*"
     service: scvo-frontend
-
   - url: "goodmoves.org.uk/*"
     service: scvo-frontend
-
-  - url: "digitalparticipation.scot/*"
-    service: router
-
-  - url: "humanrightsdeclaration.scot/*"
-    service: router
-
-  - url: "scotlandforeurope.scot/*"
-    service: router
-
   - url: "getinvolved.scot/*"
     service: scvo-frontend
-
-  - url: "test.getinvolved.scot/*"
-    service: router
-
   - url: "getinvolved.org.uk/*"
     service: scvo-frontend
-
   - url: "test.fundingscotland.com/*"
     service: scvo-frontend
 
+  - url: "test.goodmoves.com/*"
+    service: scvo-frontend
+  - url: "digitalparticipation.scot/*"
+    service: scvo-frontend
+  - url: "test.getinvolved.scot/*"
+    service: scvo-frontend
+  - url: "humanrightsdeclaration.scot/*"
+    service: scvo-frontend
+  - url: "scotlandforeurope.scot/*"
+    service: scvo-frontend
   - url: "search.volunteerscotland.net/*"
-    service: router
+    service: scvo-frontend
