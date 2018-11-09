@@ -342,7 +342,10 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     // Get some properties from the request to create our router request object
     const host = request.headers.host as string || 'localhost';
     const hostname = host.split(':')[0];
-    const fullUrl = 'https://' + host + request.url;
+    let fullUrl = 'https://' + host + request.url;
+    if (fullUrl.lastIndexOf('/') === fullUrl.length - 1) {
+      fullUrl = fullUrl.substr(0, fullUrl.length - 1);
+    }
     const url = Url.parse(fullUrl);
    
     // Get the site name
