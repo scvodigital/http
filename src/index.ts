@@ -350,12 +350,14 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     }
 
     // If the request is not secure, redirect to HTTPS url generated above
+    /*
     if (!(request.socket as any).encrypted) {
       response.statusCode = 301;
       response.setHeader('Location', fullUrl);
       response.end();
       return;
     }
+    */
 
     const url = Url.parse(fullUrl);
    
