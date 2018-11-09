@@ -254,6 +254,8 @@ function createTaskModules(): Map<any> {
 const requestHandler = async (request: Http.IncomingMessage, response: Http.ServerResponse) => {
   if (request.url && request.url.startsWith('/assets/')) {
     await assetsRequestHandler(request, response);
+  } else if (request.url && request.url.startsWith('/emailer/process-proxy')) {
+    await emailerRequestHandler(request, response);
   } else if (request.url && request.url.startsWith('/readiness_check')) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/plain');
@@ -423,6 +425,60 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     response.end(Stringify(err, null, 4));
   }
 };
+
+function sleep(ms: number): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
+}
+
+const emailerRequestHandler = async (request: Http.IncomingMessage, response: Http.ServerResponse) => {
+  if (!routers) {
+    reloadRouters();
+  }
+
+  if (!routers || !routers.hasOwnProperty('emailer')) {
+    response.statusCode = 500;
+    response.end('No routers loaded or emailer router missing');
+    return;
+  }
+
+  const responses: any[] = [];
+
+  for (let i = 0; i < 6; i++) {
+    const response = await processEmails();
+    responses.push(response);
+    await sleep(5000);
+  }
+
+  response.statusCode = 200;
+  response.setHeader('Content-Type', 'pplication/json');
+
+  response.end(Stringify(responses, null, 4));
+}
+
+async function processEmails(): Promise<RouterResponse|null> {
+  if (routers && routers.hasOwnProperty('emailer')) {
+    const request: RouterRequest = {
+      url: Url.parse('https://emailer.scvo.net/process'),
+      fullUrl: 'https://emailer.scvo.net/process',
+      params: {},
+      headers: {},
+      cookies: {},
+      verb: 'GET',
+      body: null
+    }; 
+    try {
+      const response = await routers.emailer.go(request);
+      return response;
+    } catch(err) {
+      console.error('Error mocking emailer.go with request:', request, err);
+    }
+  }
+  return null;
+}
 
 /*
  * Work out the configuration name of the incoming site. if that fails return the default
