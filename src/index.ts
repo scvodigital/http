@@ -329,15 +329,15 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
 
     // Ignore requests to /favicon.ico
     if (request.url === '/favicon.ico') {
-      response.end('');
       response.statusCode = 200;
+      response.end('');
       return;
     }
 
     // If there are still no routers, something must be wrong
     if (!routers) {
-      response.end('Routers could not be loaded');
       response.statusCode = 500;
+      response.end('Routers could not be loaded');
       return;
     }
 
@@ -348,6 +348,15 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     if (fullUrl.lastIndexOf('/') === fullUrl.length - 1) {
       fullUrl = fullUrl.substr(0, fullUrl.length - 1);
     }
+
+    // If the request is not secure, redirect to HTTPS url generated above
+    if (!(request.socket as any).encrypted) {
+      response.statusCode = 301;
+      response.setHeader('Location', fullUrl);
+      response.end();
+      return;
+    }
+
     const url = Url.parse(fullUrl);
    
     // Get the site name
