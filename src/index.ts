@@ -119,7 +119,6 @@ if (LIVE) {
  */
 function clearRouters() {
   if (routers) {
-    console.log('Clearing Routers:', Object.keys(routers));
     for (var name in routers) {
       delete routers[name];
     }
@@ -281,7 +280,6 @@ const assetsRequestHandler = async (request: Http.IncomingMessage, response: Htt
     // Work out the path to the requested file
     const url = (request.url as string).split('/assets/')[1];
     const path = Path.join(CONFIG.localSitesDir, siteName, url || '');
-    console.log('Getting asset:', path); 
 
     // Get a stat object to get the length of the file
     const stat = Fs.statSync(path);
@@ -300,7 +298,6 @@ const assetsRequestHandler = async (request: Http.IncomingMessage, response: Htt
 
     // If the file is GZipped then add the appropriate content encoding
     if (gzipped) {
-      console.log('Gzipped:', path);
       head['Content-Encoding'] = 'gzip';
     }
 
@@ -348,8 +345,6 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     const fullUrl = 'https://' + host + request.url;
     const url = Url.parse(fullUrl);
    
-    console.log('Request for:', fullUrl);
-
     // Get the site name
     const siteName = getRequestSiteName(request);
 

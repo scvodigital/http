@@ -27,13 +27,13 @@ dispatch:
     service: scvo-frontend
 
   - url: "digitalparticipation.scot/*"
-    service: scvo-frontend
+    service: router
 
   - url: "humanrightsdeclaration.scot/*"
-    service: scvo-frontend
+    service: router
 
   - url: "scotlandforeurope.scot/*"
-    service: scvo-frontend
+    service: router
 
   - url: "getinvolved.scot/*"
     service: scvo-frontend
