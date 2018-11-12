@@ -350,9 +350,12 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
       fullUrl = fullUrl.substr(0, fullUrl.length - 1);
     }
 
+    console.log('Hostname:', hostname, '| Path:', request.url, '| Secure:', secure);
+
     // If the request is not secure, redirect to HTTPS url generated above
     if (secure === false) {
       //console.log('Unecrypted:', fullUrl, (request.connection as any).encrypted || 'No connection.encrypted property', request.headers);
+      console.log('Because we are not secure, redirecting:', fullUrl);
       response.statusCode = 301;
       response.setHeader('Location', fullUrl);
       response.end();
