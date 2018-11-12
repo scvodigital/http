@@ -342,7 +342,7 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     }
 
     // Get some properties from the request to create our router request object
-    const secure: null | boolean = !request.headers.hasOwnProperty('X-Forwarded-Proto') ? null : request.headers['X-Forwarded-Proto'] === 'https';
+    const secure: null | boolean = !request.headers.hasOwnProperty('x-forwarded-proto') ? null : request.headers['x-forwarded-proto'] === 'https';
     const host = request.headers.host as string || 'localhost';
     const hostname = host.split(':')[0];
     let fullUrl = 'https://' + host + request.url;
