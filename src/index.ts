@@ -38,7 +38,8 @@ import {
   HttpVerb, RendererHandlebars, RendererJsone, TaskElasticsearch, 
   TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest, 
   TaskRender, TaskFirebaseAuth, TaskFirebaseRtbGet, 
-  TaskFirebaseRtbSet, TaskTransform, TaskMailgun, TaskGeneratePdf
+  TaskFirebaseRtbSet, TaskTransform, TaskMailgun, TaskGeneratePdf, 
+  TaskGAGet
 } from '@scvo/router';
 /**
  * END: Node imports
@@ -243,7 +244,8 @@ function createTaskModules(): Map<any> {
     }),
     transform: new TaskTransform({ querystring: Querystring, url: Url }),
     mailgun: new TaskMailgun(CONFIG.mailgunAccounts),
-    request: new TaskRequest()
+    request: new TaskRequest(),
+    gaGet: new TaskGAGet(CONFIG.googleAccounts)
   };
   return routerTaskModules;
 }

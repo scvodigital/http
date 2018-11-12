@@ -371,6 +371,26 @@ export class Helpers {
     }
   }
 
+  static helper_momentStartOf(date: moment.Moment, what: string) {
+    if (!what) {
+      what = 'month';
+    }
+    if (!date) {
+      date = moment();
+    }
+    return date.startOf(what as moment.unitOfTime.StartOf);
+  }
+  
+  static helper_momentEndOf(date: moment.Moment, what: string) {
+    if (!what) {
+      what = 'month';
+    }
+    if (!date) {
+      date = moment();
+    }
+    return date.endOf(what as moment.unitOfTime.StartOf);
+  }
+
   static helper_momentFormat(date: moment.Moment, format = '') {
     if (!format) {
       return date.format();
