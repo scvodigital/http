@@ -11,6 +11,7 @@ export interface Config {
   firebaseAccounts: Map<FirebaseAccount>;
   mysqlAccounts: Map<MySqlAccount>;
   mailgunAccounts: Map<any>;
+  googleAccounts: Map<GoogleAccount>;
 }
 
 export interface Map<T> {
@@ -40,4 +41,9 @@ export interface MySqlAccount {
   user: string;
   password: string;
   database: string;
+}
+
+export interface GoogleAccount {
+  clientEmail: string;
+  privateKey: string;
 }

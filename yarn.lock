@@ -209,9 +209,9 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.45":
-  version "1.2.45"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.45.tgz#549db787102ead8b3e04505616e13de5ac0bca62"
+"@scvo/router@^1.2.46":
+  version "1.2.46"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.46.tgz#aa4ccbe212cda1f33659eead1735645b73d16baf"
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "^4.0.38"
@@ -224,6 +224,7 @@
     dot-object "^1.7.0"
     elasticsearch "^15.0.0"
     firebase-admin "^6.1.0"
+    googleapis "^35.0.0"
     handlebars "^4.0.11"
     json-e "^2.7.0"
     json-logic-js "^1.2.2"
@@ -1622,6 +1623,24 @@ google-proto-files@^0.17.0:
     globby "^8.0.0"
     protobufjs "^6.8.0"
 
+googleapis-common@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/googleapis-common/-/googleapis-common-0.4.0.tgz#3b3c2c26f731dcf72101239e70dfa3d677e079e6"
+  dependencies:
+    axios "^0.18.0"
+    google-auth-library "^2.0.0"
+    pify "^4.0.0"
+    qs "^6.5.2"
+    url-template "^2.0.8"
+    uuid "^3.2.1"
+
+googleapis@^35.0.0:
+  version "35.0.0"
+  resolved "https://registry.yarnpkg.com/googleapis/-/googleapis-35.0.0.tgz#958503baa2d32b2702aed7308f8b6abd15a9b5c1"
+  dependencies:
+    google-auth-library "^2.0.0"
+    googleapis-common "^0.4.0"
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
@@ -2649,6 +2668,10 @@ pify@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
 
+pify@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
+
 png-js@>=0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/png-js/-/png-js-0.1.1.tgz#1cc7c212303acabe74263ec3ac78009580242d93"
@@ -2838,7 +2861,7 @@ q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
-qs@~6.5.2:
+qs@^6.5.2, qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
 
@@ -3572,6 +3595,10 @@ url-pattern@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/url-pattern/-/url-pattern-1.0.3.tgz#0409292471b24f23c50d65a47931793d2b5acfc1"
 
+url-template@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/url-template/-/url-template-2.0.8.tgz#fc565a3cccbff7730c775f5641f9555791439f21"
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
@@ -3580,7 +3607,7 @@ util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
-uuid@^3.3.2:
+uuid@^3.2.1, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
