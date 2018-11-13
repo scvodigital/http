@@ -2,8 +2,8 @@ cron:
   - description: "Daily Analytics to Salesforce importer for Everything else"
     url: /analytics/generic
     schedule: every day 03:30
-    target: scvo-frontend
+    target: router
   - description: "Email queue processor"
     url: /emailer/process-proxy
     schedule: every 1 minutes
-    target: scvo-frontend
+    target: router

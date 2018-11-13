@@ -29,6 +29,7 @@ import * as Mime from 'mime';
 import * as Cookie from 'cookie';
 import * as Pako from 'pako';
 const IsGzip = require('is-gzip');
+import * as GetBody from 'get-body';
 
 require('source-map-support').install();
 
@@ -365,13 +366,15 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     // Get the site name
     const siteName = getRequestSiteName(request);
 
+    const incomingBody = await getBody(request);
+
     // Create our router request
     const routerRequest: RouterRequest = {
       headers: request.headers || {},
       verb: (request.method as HttpVerb),
       fullUrl: fullUrl,
       url: url,
-      body: null,
+      body: incomingBody,
       cookies: request.headers.cookie && Cookie.parse(request.headers.cookie as string) || {},
       params: url.query
     };
@@ -437,6 +440,14 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     response.end(Stringify(err, null, 4));
   }
 };
+
+async function getBody(request: Http.IncomingMessage): Promise<any> {
+  if (!request.headers.hasOwnProperty('content-type')) {
+    request.headers['content-type'] = 'text/plain';
+  }
+  const body = await GetBody.parse(request, request.headers as GetBody.Headers);
+  return body;
+}
 
 function sleep(ms: number): Promise<void> {
   return new Promise<void>((resolve, reject) => {
