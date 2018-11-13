@@ -8,7 +8,7 @@
     "start": "npm run build; node build/index.js",
     "dev": "npm run build && node --inspect build/index.js",
     "build": "npm run build-clean && npm run build-typescript",
-    "build-clean": "rm -rf build && mkdir build && rm -f node_modules/@google-cloud/firestore/types/firestore.d.ts && rm -rf node_modules/@types/handlebars",
+    "build-clean": "rm -rf build && mkdir build && rm -f node_modules/@google-cloud/firestore/types/firestore.d.ts",
     "build-typescript": "./node_modules/.bin/tsc",
     "test-router": "cd ../router2; npm run compile; cd ../http; yarn add ../router2; npm run dev"
   },
