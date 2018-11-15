@@ -40,7 +40,7 @@ import {
   TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest, 
   TaskRender, TaskFirebaseAuth, TaskFirebaseRtbGet, 
   TaskFirebaseRtbSet, TaskTransform, TaskMailgun, TaskGeneratePdf, 
-  TaskGAGet
+  TaskGAGet, TaskSalesforceBulk
 } from '@scvo/router';
 /**
  * END: Node imports
@@ -246,7 +246,8 @@ function createTaskModules(): Map<any> {
     transform: new TaskTransform({ querystring: Querystring, url: Url }),
     mailgun: new TaskMailgun(CONFIG.mailgunAccounts),
     request: new TaskRequest(),
-    gaGet: new TaskGAGet(CONFIG.googleAccounts)
+    gaGet: new TaskGAGet(CONFIG.googleAccounts),
+    salesforceBulk: new TaskSalesforceBulk(CONFIG.salesforceAccounts)
   };
   return routerTaskModules;
 }
