@@ -314,7 +314,7 @@ const assetsRequestHandler = async (request: Http.IncomingMessage, response: Htt
     Fs.createReadStream(path).pipe(response);
   } catch(err) {
     if (request.url && !request.url.endsWith('.map')) {
-      console.error('Failed to get asset', err, request.url);
+      //console.error('Failed to get asset', err, request.url);
     }
     response.statusCode = 404;
     response.end(Stringify(err, null, 4));
@@ -403,6 +403,7 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
 
     // Prepare our response body and content type
     let body: any = {};
+    let bodyBuffer: Buffer | undefined;
     let contentType = 'application/json';
 
     // If we have been given a string by the router, set the response body and type to 
@@ -411,14 +412,16 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     if (typeof routerResponse.body === 'string') {
       contentType = routerResponse.contentType || 'text/html';
       body = routerResponse.body;
+    } else if (Buffer.isBuffer(routerResponse.body)) {
+      contentType = routerResponse.contentType || 'application/octet-stream';
+      body = routerResponse.body;
     } else {
-      contentType = 'application/json';
+      contentType = routerResponse.contentType || 'application/json';
       body = JSON.stringify(routerResponse.body);
     }
 
-    // GZip our response body string
     body = Pako.gzip(body);
-    const bodyBuffer = Buffer.from(body);
+    bodyBuffer = Buffer.from(body);
 
     // Set the encoding and length headers
     response.setHeader('Content-Encoding', 'gzip');
