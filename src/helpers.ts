@@ -380,7 +380,7 @@ export class Helpers {
     }
     return date.startOf(what as moment.unitOfTime.StartOf);
   }
-  
+
   static helper_momentEndOf(date: moment.Moment, what: string) {
     if (!what) {
       what = 'month';
@@ -500,7 +500,7 @@ export class Helpers {
     }
     const regex = new RegExp(expression, options);
     const output = regex.test(input);
-    //console.log('REGEX MATCH -> input:', input, '| expression:', regex, '| options:', options, '| output:', output); 
+    //console.log('REGEX MATCH -> input:', input, '| expression:', regex, '| options:', options, '| output:', output);
     return output;
   }
 
@@ -529,6 +529,27 @@ export class Helpers {
       return input;
     }
   }
+
+  static helper_customPaginate(value: number, maximum: number, innerRange: number, outerRange: number) {
+    if (!innerRange) innerRange = 2;
+    if (!outerRange) outerRange = 2;
+    const pagerefs = [];
+      for (var x = 1; x < maximum; x++){
+          if (x <= outerRange && x <= value) pagerefs.push(x);
+          else if (Math.abs(value - (x)) <= innerRange) pagerefs.push(x);
+          else if (x >= maximum - outerRange) pagerefs.push(x);
+          else if (x < value) {
+              pagerefs.push("...");
+              x = value - innerRange - 1;
+          }
+          else if (x > value) {
+              pagerefs.push("...");
+              x = maximum - outerRange - 1;
+          }
+      }
+      return pagerefs;
+  }
+
 
   static helper_stripDomains(input: string, domains: string[]) {
     if (typeof input !== 'string' || !Array.isArray(domains)) {

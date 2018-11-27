@@ -2099,9 +2099,9 @@ jsforce@^1.9.1:
     request "^2.72.0"
     xml2js "^0.4.16"
 
-"json-e@git+https://github.com/scvodigital/json-e.git":
+"json-e@https://github.com/scvodigital/json-e":
   version "3.0.0"
-  resolved "git+https://github.com/scvodigital/json-e.git#6f69ad472bfc97671c78131ee675c464986fcbf5"
+  resolved "https://github.com/scvodigital/json-e#6f69ad472bfc97671c78131ee675c464986fcbf5"
   dependencies:
     json-stable-stringify "^1.0.1"
 
