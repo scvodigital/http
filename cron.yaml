@@ -1,6 +1,6 @@
 cron:
   - description: "Daily Analytics to Salesforce importer for Everything else"
-    url: /analytics/generic
+    url: /analytics-importer
     schedule: every day 03:30
     target: router
   - description: "Email queue processor"
