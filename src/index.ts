@@ -38,7 +38,7 @@ import {
   Router, RouterConfiguration, RouterRequest, RouterResponse, 
   HttpVerb, RendererHandlebars, RendererJsone, TaskElasticsearch, 
   TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest, 
-  TaskRender, TaskFirebaseAuth, TaskFirebaseRtbGet, 
+  TaskRender, TaskFirebaseAuth, TaskFirebaseRtbGet, TaskReroute, 
   TaskFirebaseRtbSet, TaskTransform, TaskMailgun, TaskGeneratePdf, 
   TaskGAGet, TaskSalesforceBulk
 } from '@scvo/router';
@@ -247,7 +247,8 @@ function createTaskModules(): Map<any> {
     mailgun: new TaskMailgun(CONFIG.mailgunAccounts),
     request: new TaskRequest(),
     gaGet: new TaskGAGet(CONFIG.googleAccounts),
-    salesforceBulk: new TaskSalesforceBulk(CONFIG.salesforceAccounts)
+    salesforceBulk: new TaskSalesforceBulk(CONFIG.salesforceAccounts),
+    reroute: new TaskReroute()
   };
   return routerTaskModules;
 }

@@ -8,7 +8,7 @@
     "start": "npm run build; node build/index.js",
     "dev": "npm run build && node --inspect build/index.js",
     "build": "npm run build-clean && npm run build-typescript",
-    "build-clean": "rm -rf build && mkdir build && rm -f node_modules/@google-cloud/firestore/types/firestore.d.ts",
+    "build-clean": "rm -rf build && mkdir build",
     "build-typescript": "./node_modules/.bin/tsc",
     "test-router": "cd ../router2; npm run compile; cd ../http; yarn add ../router2; npm run dev"
   },
@@ -33,7 +33,7 @@
   "dependencies": {
     "@elastic/datemath": "^4.0.2",
     "@scvo/json-inc": "^0.0.15",
-    "@scvo/router": "^1.2.49",
+    "@scvo/router": "^1.2.50",
     "@types/chokidar": "^1.7.5",
     "@types/cookie": "^0.3.1",
     "@types/globby": "^8.0.0",
@@ -48,7 +48,7 @@
     "cookie": "^0.3.1",
     "deep-diff": "^1.0.2",
     "dot-object": "^1.7.0",
-    "firebase-admin": "^6.0.0",
+    "firebase-admin": "^6.1.0",
     "get-body": "^1.0.3",
     "globby": "^8.0.1",
     "handlebars": "^4.0.12",
