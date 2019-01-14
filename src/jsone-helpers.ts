@@ -19,4 +19,7 @@ export const JsoneHelpers = {
   dateFormat: (format: string, date?: any): string => {
     return moment(date).format(format);
   },
+  stringReplace: (value: string, expression: string | RegExp, replace: string) => {
+    return value.split(expression).join(replace);
+  },
 }

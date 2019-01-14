@@ -9,7 +9,7 @@ import * as Url from 'url';
 import * as Querystring from 'url';
 import * as Path from 'path';
 import * as Fs from 'fs';
-import { exec as Exec } from 'child_process'
+import { exec as Exec, execSync as ExecSync } from 'child_process'
 
 // Internal Imports
 import { CONFIG } from './config';
@@ -101,7 +101,9 @@ if (LIVE) {
   });
 } else {
   // Setup a file watcher to look out for changes to local site configuration files
-  const watcher = Chokidar.watch(SITES_GLOB);
+  const watcher = Chokidar.watch(SITES_GLOB, {
+    awaitWriteFinish: true
+  });
   console.log('FILEWATCHER -> Monitoring the following glob for changes:', SITES_GLOB);
 
   // Create a 'change' event handler for the file watcher
@@ -110,6 +112,7 @@ if (LIVE) {
 		try {
       // If there is a change, reload the routers
     	await reloadRouters();    
+      ExecSync('notify-send -a "SCVO Router" -t 10000 -u critical "Sites reloaded"');
 		} catch(err) {
 			console.error('Failed to reload routers:', err);
 		}
