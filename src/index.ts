@@ -112,7 +112,7 @@ if (LIVE) {
 		try {
       // If there is a change, reload the routers
     	await reloadRouters();    
-      ExecSync('notify-send -a "SCVO Router" -t 10000 -c critical "Sites reloaded"');
+      ExecSync('notify-send -a "SCVO Router" -t 10000 -u critical "Sites reloaded"');
 		} catch(err) {
 			console.error('Failed to reload routers:', err);
 		}
