@@ -12,6 +12,7 @@ export interface Config {
   mysqlAccounts: Map<MySqlAccount>;
   mailgunAccounts: Map<any>;
   googleAccounts: Map<GoogleAccount>;
+  requestSecrets: any;
 }
 
 export interface Map<T> {

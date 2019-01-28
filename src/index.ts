@@ -248,7 +248,7 @@ function createTaskModules(): Map<any> {
     }),
     transform: new TaskTransform({ querystring: Querystring, url: Url }),
     mailgun: new TaskMailgun(CONFIG.mailgunAccounts),
-    request: new TaskRequest(),
+    request: new TaskRequest(CONFIG.requestSecrets),
     gaGet: new TaskGAGet(CONFIG.googleAccounts),
     salesforceBulk: new TaskSalesforceBulk(CONFIG.salesforceAccounts),
     reroute: new TaskReroute()
