@@ -196,7 +196,6 @@
 "@scvo/router@^1.2.54":
   version "1.2.54"
   resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.54.tgz#bac927a7e4ccb433a37e8203e07df4dd58fe6b5b"
-  integrity sha512-AA8jewuJSJVmcay1FA5nK6RUe2u2KXAf8dXcZNSLDWBU1UsVGoa7pNw1GLHzTVr8FNQcnpN2F/cBMwcietcXjA==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "^4.0.38"
@@ -2085,9 +2084,9 @@ jsforce@^1.9.1:
     request "^2.72.0"
     xml2js "^0.4.16"
 
-"json-e@git+https://github.com/scvodigital/json-e.git":
+"json-e@https://github.com/scvodigital/json-e":
   version "3.0.0"
-  resolved "git+https://github.com/scvodigital/json-e.git#f7741d6e4417b781f765a5398fff00eef3027929"
+  resolved "https://github.com/scvodigital/json-e#f7741d6e4417b781f765a5398fff00eef3027929"
   dependencies:
     json-stable-stringify "^1.0.1"
 
