@@ -112,7 +112,7 @@ if (LIVE) {
 		try {
       // If there is a change, reload the routers
     	await reloadRouters();    
-      ExecSync('notify-send -a "SCVO Router" -t 10000 -u critical "Sites reloaded"');
+      ExecSync('notify-send -a "SCVO Router" -t 10000 -u normal "Sites reloaded"');
 		} catch(err) {
 			console.error('Failed to reload routers:', err);
 		}
@@ -248,7 +248,7 @@ function createTaskModules(): Map<any> {
     }),
     transform: new TaskTransform({ querystring: Querystring, url: Url }),
     mailgun: new TaskMailgun(CONFIG.mailgunAccounts),
-    request: new TaskRequest(),
+    request: new TaskRequest(CONFIG.requestSecrets),
     gaGet: new TaskGAGet(CONFIG.googleAccounts),
     salesforceBulk: new TaskSalesforceBulk(CONFIG.salesforceAccounts),
     reroute: new TaskReroute()
@@ -501,8 +501,18 @@ async function processEmails(): Promise<RouterResponse|null> {
       verb: 'GET',
       body: null
     }; 
+    const vsRequest: RouterRequest = {
+      url: Url.parse('https://emailer.scvo.net/vs-process'),
+      fullUrl: 'https://emailer.scvo.net/vs-process',
+      params: {},
+      headers: {},
+      cookies: {},
+      verb: 'GET',
+      body: null
+    }; 
     try {
       const response = await routers.emailer.go(request);
+      const vsRespone = await routers.emailer.go(vsRequest);
       return response;
     } catch(err) {
       console.error('Error mocking emailer.go with request:', request, err);

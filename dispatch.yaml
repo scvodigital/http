@@ -3,30 +3,30 @@ dispatch:
     service: default
 
   - url: "goodmoves.com/*"
-    service: router 
+    service: router
   - url: "goodmoves.scot/*"
-    service: router 
+    service: router
   - url: "goodmoves.be/*"
-    service: router 
+    service: router
   - url: "goodmoves.org.uk/*"
-    service: router 
+    service: router
   - url: "getinvolved.scot/*"
-    service: router 
+    service: router
   - url: "getinvolved.org.uk/*"
-    service: router 
+    service: router
+  - url: "fundingscotland.com/*"
+    service: router
   - url: "test.fundingscotland.com/*"
-    service: router 
+    service: router
+  - url: "test.fife.fundingscotland.com/*"
+    service: router
   - url: "emailer.scvo.net/*"
-    service: router 
+    service: router
   - url: "scvo.org/*"
     service: router
   - url: "scvo.org.uk/*"
     service: router
-  - url: "test.goodmoves.com/*"
-    service: router
   - url: "digitalparticipation.scot/*"
-    service: router
-  - url: "test.getinvolved.scot/*"
     service: router
   - url: "humanrightsdeclaration.scot/*"
     service: router
