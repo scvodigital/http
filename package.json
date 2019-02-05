@@ -33,7 +33,7 @@
   "dependencies": {
     "@elastic/datemath": "^4.0.2",
     "@scvo/json-inc": "^0.0.15",
-    "@scvo/router": "^1.2.56",
+    "@scvo/router": "^1.2.57",
     "@types/chokidar": "^1.7.5",
     "@types/cookie": "^0.3.1",
     "@types/globby": "^8.0.0",
