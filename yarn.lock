@@ -193,10 +193,10 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.57":
-  version "1.2.57"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.57.tgz#cb7b6ff3fd3fec2a2f355804ca210d8874359784"
-  integrity sha512-c4x5Gqzn5AeaykdD54MR4Po4dKXcNC2gnAME015ZxC9B6+1xEw0yH/p9Ikg6yrz2jB9cf0+2YgikYRXAgCBiRA==
+"@scvo/router@^1.2.58":
+  version "1.2.58"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.58.tgz#0d50c39bf3f0be2bbfd8bdf315ba9ffbdd5e9fc2"
+  integrity sha512-hdGVDCNuuWQB/dy+DbhprA5B0oNtE3BQ52ttWRyGPcvwVvfL1YWqMgLzqd9mzbQXrjjAd+mRnnld0kVE9r9mJQ==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "^4.0.38"
