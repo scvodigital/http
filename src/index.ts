@@ -424,18 +424,22 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
       body = JSON.stringify(routerResponse.body);
     }
 
-    body = Pako.gzip(body);
-    bodyBuffer = Buffer.from(body);
+    if (!routerResponse.doNotZip) {
+      body = Pako.gzip(body);
+      bodyBuffer = Buffer.from(body);
 
-    // Set the encoding and length headers
-    response.setHeader('Content-Encoding', 'gzip');
-    response.setHeader('Content-Length', bodyBuffer.length);
+      // Set the encoding and length headers
+      response.setHeader('Content-Encoding', 'gzip');
+      response.setHeader('Content-Length', bodyBuffer.length);
 
-    // Clean up unnecessary stuff from the content type
-    if (contentType.indexOf('charset') > -1) {
-      contentType = contentType.substr(0, contentType.indexOf(';'));
+      // Clean up unnecessary stuff from the content type
+      if (contentType.indexOf('charset') > -1) {
+        contentType = contentType.substr(0, contentType.indexOf(';'));
+      }
+      contentType += '; charset=x-user-defined-binary';
+    } else {
+      bodyBuffer = Buffer.from(body);
     }
-    contentType += '; charset=x-user-defined-binary';
     response.setHeader('Content-Type', contentType);
     response.statusCode = routerResponse.statusCode || 200;
 
