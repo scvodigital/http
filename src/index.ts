@@ -38,7 +38,7 @@ import {
   Router, RouterConfiguration, RouterRequest, RouterResponse, 
   HttpVerb, RendererHandlebars, RendererJsone, TaskElasticsearch, 
   TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest, 
-  TaskRender, TaskFirebaseAuth, TaskFirebaseRtbGet, TaskReroute, 
+  TaskRender, TaskFirebaseAuth, TaskFirebaseGetUser, TaskFirebaseRtbGet, TaskReroute, 
   TaskFirebaseRtbSet, TaskTransform, TaskMailgun, TaskGeneratePdf, 
   TaskGAGet, TaskSalesforceBulk
 } from '@scvo/router';
@@ -236,6 +236,7 @@ function createTaskModules(): Map<any> {
     render: new TaskRender(),
     renderLayout: new TaskRenderLayout(),
     firebaseAuth: new TaskFirebaseAuth(firebaseApps),
+    firebaseGetUser: new TaskFirebaseGetUser(firebaseApps),
     firebaseRtbGet: new TaskFirebaseRtbGet(firebaseApps),
     firebaseRtbSet: new TaskFirebaseRtbSet(firebaseApps),
     generatePdf: new TaskGeneratePdf({
