@@ -660,6 +660,16 @@ export class Helpers {
     return out;
   }
 
+  static helper_withExtend(context: any) {
+    const args: IHelperArgs = arguments[1];
+    if (args.hash && Object.keys(args.hash).length > 0) {
+      for (const key of Object.keys(args.hash)) {
+        context[key] = args.hash[key];
+      }
+    }
+    return args.fn(context);
+  }
+
   static helper_sortByIndex(items: any[], index: any[], property: string) {
     if (!Array.isArray(items) || !Array.isArray(index) || typeof property !== 'string') {
       return items;
@@ -703,5 +713,6 @@ export interface IHelperArgs {
   name: string;
   hash: any;
   data: any;
+  fn: (...args: any[]) => any;
 }
 /* tslint:enable */
