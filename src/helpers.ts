@@ -186,6 +186,14 @@ export class Helpers {
     }
     return output.join('\n');
   }
+  
+  static helper_shuffle(input: any[]) {
+    if (!Array.isArray(input)) {
+      return [];
+    }
+    const output = JSON.parse(JSON.stringify(input));
+    return output.sort((a: any, b: any) => { return Math.round(Math.random()); });
+  }
 
   static helper_arrayConcat() {
     var output = [];
@@ -577,6 +585,13 @@ export class Helpers {
     return input.length > 0;
   }
 
+  static helper_entries(input: any) {
+    if (typeof input !== 'object') {
+      return [];
+    }
+    return Object.entries(input);
+  }
+
   static helper_pluck(items: any[], path: string) {
     if (typeof path !== 'string' || !Array.isArray(items)) {
       return null;
@@ -643,6 +658,7 @@ export class Helpers {
             break;
           case ('valueIn'): match = test.indexOf(value) > -1;
             break;
+          case ('exists'): match = !!property;
         }
       } catch(err) { }
       if (match) {
