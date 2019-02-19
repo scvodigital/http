@@ -193,9 +193,9 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.61":
-  version "1.2.61"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.61.tgz#d23a699e29ff4bf90b2322d667485e6bb5e565e8"
+"@scvo/router@^1.2.62":
+  version "1.2.62"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.62.tgz#87093b9b6c92a8fe24593107abc808df04190770"
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "^4.0.38"
