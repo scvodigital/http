@@ -384,6 +384,9 @@ export class Helpers {
   }
 
   static helper_keyValue(obj: any) {
+    if (!obj) {
+      return [];
+    }
     const props: Array < {
       key: string;
       value: any
