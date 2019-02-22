@@ -49,6 +49,13 @@ export class Helpers {
     return Object.keys(input);
   }
 
+  static helper_getValues(input: any) {
+    if (!input) {
+      return [];
+    }
+    return Object.values(input);
+  }
+
   static helper_markdown(input: string) {
     if (!input) {
       return '';
@@ -56,6 +63,25 @@ export class Helpers {
 
     var html = markdown.markdown.toHTML(input);
     return html;
+  }
+
+  static helper_dotPattern(input: any, path: string) {
+    if (!input || !path) {
+      return [];
+    }
+
+    const output = [];
+    const pattern = path.replace(/(\.?)(\*)(\.?)/g, '\$1[^\\.]+\$3');
+    const regex = new RegExp(pattern, 'g');
+    const flattened = dot.dot(input);
+
+    for (const [path, value] of Object.entries(flattened)) {
+      if (regex.test(path)) {
+        output.push(value);
+      }  
+    }
+
+    return output;
   }
 
   static helper_mysqlEscape(input: string, stripQuotes: boolean = false) {
@@ -658,6 +684,10 @@ export class Helpers {
             break;
           case ('valueIn'): match = test.indexOf(value) > -1;
             break;
+          case ('testNotIn'): match = value.indexOf(test) === -1;
+            break;
+          case ('valueNotIn'): match = test.indexOf(value) === -1;
+            break;
           case ('exists'): match = !!property;
         }
       } catch(err) { }
@@ -674,6 +704,19 @@ export class Helpers {
     }
     const out = items.sort();
     return out;
+  }
+
+  static helper_sortBy(items: any[], property: string, direction: string) {
+    if (['asc', 'desc'].indexOf(direction) === -1) {
+      direction = 'asc';
+    }
+    const clone = JSON.parse(JSON.stringify(items));
+    clone.sort((a: any, b :any) => {
+      const valA = property ? dot.pick(property, a) || 0 : a;
+      const valB = property ? dot.pick(property, b) || 0 : b;
+      return direction === 'asc' ? valA - valB : valB - valA;
+    });
+    return clone;
   }
 
   static helper_withExtend(context: any) {
