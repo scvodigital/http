@@ -44,7 +44,7 @@
     "@types/pako": "^1.0.0",
     "arr-diff": "^4.0.0",
     "chokidar": "^2.0.4",
-    "clayhandlebars": "^3.2.6",
+    "clayhandlebars": "https://github.com/scvodigital/handlebars",
     "cookie": "^0.3.1",
     "deep-diff": "^1.0.2",
     "dot-object": "^1.7.0",

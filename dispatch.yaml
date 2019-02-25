@@ -1,7 +1,6 @@
 dispatch:
   - url: "scvo.net/*"
     service: default
-
   - url: "goodmoves.com/*"
     service: router
   - url: "goodmoves.scot/*"
@@ -16,9 +15,9 @@ dispatch:
     service: router
   - url: "fundingscotland.com/*"
     service: router
-  - url: "test.fundingscotland.com/*"
+  - url: "*.fundingscotland.com/*"
     service: router
-  - url: "test.fife.fundingscotland.com/*"
+  - url: "*.test.fundingscotland.com/*"
     service: router
   - url: "emailer.scvo.net/*"
     service: router
