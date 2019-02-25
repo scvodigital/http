@@ -1,7 +1,6 @@
 dispatch:
   - url: "scvo.net/*"
     service: default
-
   - url: "goodmoves.com/*"
     service: router
   - url: "goodmoves.scot/*"
@@ -14,21 +13,7 @@ dispatch:
     service: router
   - url: "getinvolved.org.uk/*"
     service: router
-  - url: "test.fundingscotland.com/*"
-    service: router
-  - url: "test.fife.fundingscotland.com/*"
-    service: router
-  - url: "test.eastrenfrewshire.fundingscotland.com/*"
-    service: router
-  - url: "test.northlanarkshire.fundingscotland.com/*"
-    service: router
-  - url: "test.southlanarkshire.fundingscotland.com/*"
-    service: router
-  - url: "test.shetland.fundingscotland.com/*"
-    service: router
-  - url: "test.stirling.fundingscotland.com/*"
-    service: router
-  - url: "test.srn.fundingscotland.com/*"
+  - url: "*.fundingscotland.com/*"
     service: router
   - url: "emailer.scvo.net/*"
     service: router
