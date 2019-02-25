@@ -13,7 +13,11 @@ dispatch:
     service: router
   - url: "getinvolved.org.uk/*"
     service: router
+  - url: "fundingscotland.com/*"
+    service: router
   - url: "*.fundingscotland.com/*"
+    service: router
+  - url: "*.test.fundingscotland.com/*"
     service: router
   - url: "emailer.scvo.net/*"
     service: router
