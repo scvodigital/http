@@ -196,6 +196,7 @@
 "@scvo/router@^1.2.63":
   version "1.2.63"
   resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.63.tgz#ec0ffa7cad7b6372eace18e9916397557628b193"
+  integrity sha512-bXtXI5ddqi8GGinbh1HkmwHp3EMvI6hqyhMpZ0efhwRWcKI+PdBSiPyScQeQl5gd5gUw0l26py/AKDj0dnx08w==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "^4.0.38"
