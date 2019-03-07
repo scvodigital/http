@@ -27,6 +27,8 @@ dispatch:
     service: router
   - url: "digitalparticipation.scot/*"
     service: router
+  - url: "*.digitalparticipation.scot/*"
+    service: router
   - url: "humanrightsdeclaration.scot/*"
     service: router
   - url: "scotlandforeurope.scot/*"
