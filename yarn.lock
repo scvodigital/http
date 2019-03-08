@@ -193,10 +193,10 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.63":
-  version "1.2.63"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.63.tgz#ec0ffa7cad7b6372eace18e9916397557628b193"
-  integrity sha512-bXtXI5ddqi8GGinbh1HkmwHp3EMvI6hqyhMpZ0efhwRWcKI+PdBSiPyScQeQl5gd5gUw0l26py/AKDj0dnx08w==
+"@scvo/router@^1.2.64":
+  version "1.2.64"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.64.tgz#d5099d1f00ae06d3ea10303b67fee17ddf1d7f53"
+  integrity sha512-biKlXTEDO4f/Vkay+oGyZzVo8oXS+7a7iJ1iFawwNXzEHhSDQ906AD2xIrZ97KxRdfyFg5Ws3NyAFW7BvWutEg==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "^4.0.38"
@@ -208,7 +208,7 @@
     deep-extend "^0.6.0"
     dot-object "^1.7.0"
     elasticsearch "^15.0.0"
-    firebase-admin "^6.1.0"
+    firebase-admin "6.1.0"
     googleapis "^35.0.0"
     handlebars "^4.0.11"
     jsforce "^1.9.1"
@@ -1375,7 +1375,7 @@ fill-range@^4.0.0:
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
 
-firebase-admin@^6.1.0:
+firebase-admin@6.1.0, firebase-admin@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-6.1.0.tgz#375cd43ee82bccda24da1fdd34914d76f08173f3"
   dependencies:
