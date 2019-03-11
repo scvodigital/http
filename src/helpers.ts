@@ -65,6 +65,33 @@ export class Helpers {
     return html;
   }
 
+  static helper_markdownParse(input: string) {
+    if (!input) {
+      return [];
+    }
+    var tree = markdown.markdown.parse(input);
+    return tree;
+  }
+
+  static helper_slice(input: any[], start: number, end: number | undefined) {
+    if (!Array.isArray(input)) {
+      return [];
+    }
+    const output = input.slice(start || 0, end || undefined);
+    return output;
+  }
+
+  static helper_numberFormat(input: any, localeString: string, precision: number) {
+    if ((!input && input !== 0 && input !== '0') || input === true) {
+      return '';
+    }
+    let num: number = Number(input);
+    if (typeof precision === 'number') {
+      num = Number(num.toFixed(precision));
+    }
+    return num.toLocaleString(localeString);
+  }
+
   static helper_dotPattern(input: any, path: string) {
     if (!input || !path) {
       return [];
@@ -483,6 +510,17 @@ export class Helpers {
     return out;
   }
 
+  static helper_thisToThat(input: string, map: string, defaultVal: string) {
+    if (!input || !map) return '';
+    const parsed = querystring.parse(map);
+    for (const [key, value] of Object.entries(parsed)) {
+      if (input === key) {
+        return value;
+      }
+    }
+    return defaultVal;
+  }
+
   static helper_getProps(arr: any[], props: string[]) {
     const out: any[] = [];
 
@@ -521,6 +559,20 @@ export class Helpers {
     return typeof obj;
   }
 
+  static helper_substr(input: string, from: number, length: number|undefined) {
+    if (typeof input !== 'string') return input;
+    if (typeof from !== 'number') from = 0;
+    if (typeof length !== 'number') length = undefined;
+    return input.substr(from, length);
+  }
+
+  static helper_substring(input: string, start: number, end: number|undefined) {
+    if (typeof input !== 'string') return input;
+    if (typeof start !== 'number') start = 0;
+    if (typeof end !== 'number') end = undefined;
+    return input.substring(start, end);
+  }
+  
   static helper_regexReplace(
       input: string, expression: string, options: string, replace: string) {
     if (typeof input !== 'string') {
