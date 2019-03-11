@@ -81,6 +81,17 @@ export class Helpers {
     return output;
   }
 
+  static helper_numberFormat(input: any, localeString: string, precision: number) {
+    if ((!input && input !== 0 && input !== '0') || input === true) {
+      return '';
+    }
+    let num: number = Number(input);
+    if (typeof precision === 'number') {
+      num = Number(num.toFixed(precision));
+    }
+    return num.toLocaleString(localeString);
+  }
+
   static helper_dotPattern(input: any, path: string) {
     if (!input || !path) {
       return [];
