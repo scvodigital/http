@@ -14,6 +14,7 @@ import * as dateMath from '@elastic/datemath';
 
 /* tslint:disable */
 export interface Handlebars { registerHelper: (...args: any[]) => void; }
+const __switch_stack__: any[] = [];
 
 export class Helpers {
   static handlebars: any;
@@ -820,6 +821,41 @@ export class Helpers {
 
   static helper_log(message: string, obj: any) {
     console.log('####', message, '->', obj);
+  }
+
+  static helper_switch(value: any) {
+    var args = Array.from( arguments );
+    var options = args.pop();
+    __switch_stack__.push({
+        switch_match : false,
+        switch_value : value
+    });
+    var html = options.fn( this );
+    __switch_stack__.pop();
+    return html;
+  }
+
+  static helper_case(value: any) {
+    var args = Array.from( arguments );
+    var options = args.pop();
+    var caseValues = args;
+    var stack = __switch_stack__[__switch_stack__.length - 1];
+    if ( stack.switch_match || caseValues.indexOf( stack.switch_value ) === -1 ) {
+      return '';
+    } else {
+      stack.switch_match = true;
+      return options.fn( this );
+    }
+  }
+
+  static helper_switchDefault() {
+    var args = Array.from( arguments );
+    var options = args.pop();
+    var stack = __switch_stack__[__switch_stack__.length - 1];
+    if ( !stack || !stack.switch_match ) {
+      return options.fn( this );
+    }
+    return '';
   }
 }
 
