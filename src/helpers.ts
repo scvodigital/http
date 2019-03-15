@@ -436,6 +436,13 @@ export class Helpers {
     }
   }
 
+  static helper_momentDistance(date1: any, date2: any, measurement: string) {
+    date1 = date1 || moment();
+    date2 = date2 || moment();
+    measurement = measurement || 'days';
+    return date1.diff(date2, measurement);
+  }
+
   static helper_momentStartOf(date: moment.Moment, what: string) {
     if (!what) {
       what = 'month';
