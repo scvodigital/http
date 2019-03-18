@@ -106,7 +106,7 @@ export class Helpers {
     for (const [path, value] of Object.entries(flattened)) {
       if (regex.test(path)) {
         output.push(value);
-      }  
+      }
     }
 
     return output;
@@ -240,7 +240,7 @@ export class Helpers {
     }
     return output.join('\n');
   }
-  
+
   static helper_shuffle(input: any[]) {
     if (!Array.isArray(input)) {
       return [];
@@ -443,6 +443,10 @@ export class Helpers {
     return date1.diff(date2, measurement);
   }
 
+  static helper_momentFromNow(date: any) {
+    return moment(date).fromNow();
+  }
+
   static helper_momentStartOf(date: moment.Moment, what: string) {
     if (!what) {
       what = 'month';
@@ -580,7 +584,7 @@ export class Helpers {
     if (typeof end !== 'number') end = undefined;
     return input.substring(start, end);
   }
-  
+
   static helper_regexReplace(
       input: string, expression: string, options: string, replace: string) {
     if (typeof input !== 'string') {
