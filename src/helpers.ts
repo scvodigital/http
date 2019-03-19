@@ -82,6 +82,20 @@ export class Helpers {
     return output;
   }
 
+  static helper_sumArray(input: number[]) {
+    if (!Array.isArray(input)) {
+      return 0;
+    }
+    let total: number = 0;
+    for (let i=0; i<input.length; i++) {
+      if (isNaN(input[i])) {
+        continue;
+      }
+      total += Number(input[i]);
+    }
+    return total;
+  }
+
   static helper_numberFormat(input: any, localeString: string, precision: number) {
     if ((!input && input !== 0 && input !== '0') || input === true) {
       return '';
@@ -373,507 +387,507 @@ export class Helpers {
       return out;
     } catch (err) {
       console.error(
-          'Handlebars helper "querystring" failed to parse the following string:',
-          str, err);
-      return {};
-    }
-  }
-
-  static helper_arrMatch(src: any[], dst: any[]) {
-    if (!src && !dst) {
-      return true;
-    }
-    if (!src || !dst) {
-      return false;
-    }
-
-    src = Array.isArray(src) ? src : [src];
-    dst = Array.isArray(dst) ? dst : [dst];
-
-    let srcItems: any[] = [];
-    let dstItems: any[] = [];
-
-    src.forEach((item: any) => {
-      if (item && srcItems.indexOf(item) === -1) {
-        srcItems.push(item);
-      }
-    });
-    srcItems.sort();
-    dst.forEach((item: any) => {
-      if (item && dstItems.indexOf(item) === -1) {
-        dstItems.push(item);
-      }
-    });
-    dstItems.sort();
-
-    const diff = arrDiff(srcItems, dstItems);
-
-    return diff.length === 0;
-  }
-
-  static helper_keyValue(obj: any) {
-    if (!obj) {
-      return [];
-    }
-    const props: Array < {
-      key: string;
-      value: any
-    }
-    > = [];
-    Object.keys(obj).forEach((key: string) => {
-      props.push({key, value: obj[key]});
-    });
-    return props;
-  }
-
-  static helper_moment(date: any = null, format = '') {
-    if (!date) {
-      return moment();
-    } else if (!format) {
-      return moment(date);
-    } else {
-      return moment(date, format);
-    }
-  }
-
-  static helper_momentDistance(date1: any, date2: any, measurement: string) {
-    date1 = date1 || moment();
-    date2 = date2 || moment();
-    measurement = measurement || 'days';
-    return date1.diff(date2, measurement);
-  }
-
-  static helper_momentFromNow(date: any) {
-    return moment(date).fromNow();
-  }
-
-  static helper_momentStartOf(date: moment.Moment, what: string) {
-    if (!what) {
-      what = 'month';
-    }
-    if (!date) {
-      date = moment();
-    }
-    return date.startOf(what as moment.unitOfTime.StartOf);
-  }
-
-  static helper_momentEndOf(date: moment.Moment, what: string) {
-    if (!what) {
-      what = 'month';
-    }
-    if (!date) {
-      date = moment();
-    }
-    return date.endOf(what as moment.unitOfTime.StartOf);
-  }
-
-  static helper_momentFormat(date: moment.Moment, format = '') {
-    if (!format) {
-      return date.format();
-    } else {
-      return date.format(format);
-    }
-  }
-
-  static helper_atob(b64: string) {
-    try {
-      const buff = Buffer.from(b64, 'base64');
-      const str = buff.toString('ascii');
-      return str;
-    } catch (err) {
-      return '';
-    }
-  }
-
-  static helper_btoa(str: string) {
-    const buff = Buffer.from(str);
-    const b64 = buff.toString('base64');
-    return b64;
-  }
-
-  static helper_removeEntities(str: string) {
-    const out = s(str).decodeHTMLEntities().s;
-    return out;
-  }
-
-  static helper_decodeURIComponent(str: string) {
-    if (!str) return '';
-    console.log('DECODE URI COMPONENT BEFORE:', str);
-    const out = decodeURIComponent(str);
-    console.log('DECODE URI COMPONENT AFTER:', out);
-    return out;
-  }
-
-  static helper_encodeURIComponent(str: string) {
-    if (!str) return '';
-    const out = encodeURIComponent(str);
-    return out;
-  }
-
-  static helper_decodeURI(str: string) {
-    if (!str) return '';
-    const out = decodeURI(str);
-    return out;
-  }
-
-  static helper_encodeURI(str: string) {
-    if (!str) return '';
-    const out = encodeURI(str);
-    return out;
-  }
-
-  static helper_thisToThat(input: string, map: string, defaultVal: string) {
-    if (!input || !map) return '';
-    const parsed = querystring.parse(map);
-    for (const [key, value] of Object.entries(parsed)) {
-      if (input === key) {
-        return value;
+        'Handlebars helper "querystring" failed to parse the following string:',
+        str, err);
+        return {};
       }
     }
-    return defaultVal;
-  }
 
-  static helper_getProps(arr: any[], props: string[]) {
-    const out: any[] = [];
+    static helper_arrMatch(src: any[], dst: any[]) {
+      if (!src && !dst) {
+        return true;
+      }
+      if (!src || !dst) {
+        return false;
+      }
 
-    arr.forEach((item: any) => {
-      const newItem: any = {};
-      props.forEach((prop) => {
-        newItem[prop] = item[prop];
+      src = Array.isArray(src) ? src : [src];
+      dst = Array.isArray(dst) ? dst : [dst];
+
+      let srcItems: any[] = [];
+      let dstItems: any[] = [];
+
+      src.forEach((item: any) => {
+        if (item && srcItems.indexOf(item) === -1) {
+          srcItems.push(item);
+        }
       });
-      out.push(newItem);
-    });
+      srcItems.sort();
+      dst.forEach((item: any) => {
+        if (item && dstItems.indexOf(item) === -1) {
+          dstItems.push(item);
+        }
+      });
+      dstItems.sort();
 
-    return out;
-  }
+      const diff = arrDiff(srcItems, dstItems);
 
-  static helper_getProperty(obj: any, path: string) {
-    if (!obj || !path) {
-      return null;
+      return diff.length === 0;
     }
-    // console.log('Looking for "', path, '"');
-    const val = dot.pick(path, obj);
-    return val;
-  }
 
-  static helper_dot(path: string, options: any) {
-    if (typeof path !== 'string') {
-      return null;
+    static helper_keyValue(obj: any) {
+      if (!obj) {
+        return [];
+      }
+      const props: Array < {
+        key: string;
+        value: any
+      }
+      > = [];
+      Object.keys(obj).forEach((key: string) => {
+        props.push({key, value: obj[key]});
+      });
+      return props;
     }
-    const val = dot.pick(path, options.data.root);
-    return val;
-  }
 
-  static helper_getType(obj: any) {
-    if (Array.isArray(obj)) {
-      return 'array';
+    static helper_moment(date: any = null, format = '') {
+      if (!date) {
+        return moment();
+      } else if (!format) {
+        return moment(date);
+      } else {
+        return moment(date, format);
+      }
     }
-    return typeof obj;
-  }
 
-  static helper_substr(input: string, from: number, length: number|undefined) {
-    if (typeof input !== 'string') return input;
-    if (typeof from !== 'number') from = 0;
-    if (typeof length !== 'number') length = undefined;
-    return input.substr(from, length);
-  }
+    static helper_momentDistance(date1: any, date2: any, measurement: string) {
+      date1 = date1 || moment();
+      date2 = date2 || moment();
+      measurement = measurement || 'days';
+      return date1.diff(date2, measurement);
+    }
 
-  static helper_substring(input: string, start: number, end: number|undefined) {
-    if (typeof input !== 'string') return input;
-    if (typeof start !== 'number') start = 0;
-    if (typeof end !== 'number') end = undefined;
-    return input.substring(start, end);
-  }
+    static helper_momentFromNow(date: any) {
+      return moment(date).fromNow();
+    }
 
-  static helper_regexReplace(
+    static helper_momentStartOf(date: moment.Moment, what: string) {
+      if (!what) {
+        what = 'month';
+      }
+      if (!date) {
+        date = moment();
+      }
+      return date.startOf(what as moment.unitOfTime.StartOf);
+    }
+
+    static helper_momentEndOf(date: moment.Moment, what: string) {
+      if (!what) {
+        what = 'month';
+      }
+      if (!date) {
+        date = moment();
+      }
+      return date.endOf(what as moment.unitOfTime.StartOf);
+    }
+
+    static helper_momentFormat(date: moment.Moment, format = '') {
+      if (!format) {
+        return date.format();
+      } else {
+        return date.format(format);
+      }
+    }
+
+    static helper_atob(b64: string) {
+      try {
+        const buff = Buffer.from(b64, 'base64');
+        const str = buff.toString('ascii');
+        return str;
+      } catch (err) {
+        return '';
+      }
+    }
+
+    static helper_btoa(str: string) {
+      const buff = Buffer.from(str);
+      const b64 = buff.toString('base64');
+      return b64;
+    }
+
+    static helper_removeEntities(str: string) {
+      const out = s(str).decodeHTMLEntities().s;
+      return out;
+    }
+
+    static helper_decodeURIComponent(str: string) {
+      if (!str) return '';
+      console.log('DECODE URI COMPONENT BEFORE:', str);
+      const out = decodeURIComponent(str);
+      console.log('DECODE URI COMPONENT AFTER:', out);
+      return out;
+    }
+
+    static helper_encodeURIComponent(str: string) {
+      if (!str) return '';
+      const out = encodeURIComponent(str);
+      return out;
+    }
+
+    static helper_decodeURI(str: string) {
+      if (!str) return '';
+      const out = decodeURI(str);
+      return out;
+    }
+
+    static helper_encodeURI(str: string) {
+      if (!str) return '';
+      const out = encodeURI(str);
+      return out;
+    }
+
+    static helper_thisToThat(input: string, map: string, defaultVal: string) {
+      if (!input || !map) return '';
+      const parsed = querystring.parse(map);
+      for (const [key, value] of Object.entries(parsed)) {
+        if (input === key) {
+          return value;
+        }
+      }
+      return defaultVal;
+    }
+
+    static helper_getProps(arr: any[], props: string[]) {
+      const out: any[] = [];
+
+      arr.forEach((item: any) => {
+        const newItem: any = {};
+        props.forEach((prop) => {
+          newItem[prop] = item[prop];
+        });
+        out.push(newItem);
+      });
+
+      return out;
+    }
+
+    static helper_getProperty(obj: any, path: string) {
+      if (!obj || !path) {
+        return null;
+      }
+      // console.log('Looking for "', path, '"');
+      const val = dot.pick(path, obj);
+      return val;
+    }
+
+    static helper_dot(path: string, options: any) {
+      if (typeof path !== 'string') {
+        return null;
+      }
+      const val = dot.pick(path, options.data.root);
+      return val;
+    }
+
+    static helper_getType(obj: any) {
+      if (Array.isArray(obj)) {
+        return 'array';
+      }
+      return typeof obj;
+    }
+
+    static helper_substr(input: string, from: number, length: number|undefined) {
+      if (typeof input !== 'string') return input;
+      if (typeof from !== 'number') from = 0;
+      if (typeof length !== 'number') length = undefined;
+      return input.substr(from, length);
+    }
+
+    static helper_substring(input: string, start: number, end: number|undefined) {
+      if (typeof input !== 'string') return input;
+      if (typeof start !== 'number') start = 0;
+      if (typeof end !== 'number') end = undefined;
+      return input.substring(start, end);
+    }
+
+    static helper_regexReplace(
       input: string, expression: string, options: string, replace: string) {
-    if (typeof input !== 'string') {
-      return input;
-    }
-    const regex = new RegExp(expression, options);
-    const output = input.replace(regex, replace);
-    return output;
-  }
+        if (typeof input !== 'string') {
+          return input;
+        }
+        const regex = new RegExp(expression, options);
+        const output = input.replace(regex, replace);
+        return output;
+      }
 
-  static helper_regexMatch(input: string, expression: string, options: string) {
-    if (typeof input !== 'string') {
-      return input;
-    }
-    const regex = new RegExp(expression, options);
-    const output = regex.test(input);
-    //console.log('REGEX MATCH -> input:', input, '| expression:', regex, '| options:', options, '| output:', output);
-    return output;
-  }
+      static helper_regexMatch(input: string, expression: string, options: string) {
+        if (typeof input !== 'string') {
+          return input;
+        }
+        const regex = new RegExp(expression, options);
+        const output = regex.test(input);
+        //console.log('REGEX MATCH -> input:', input, '| expression:', regex, '| options:', options, '| output:', output);
+        return output;
+      }
 
-  static helper_reverse(input: any[]) {
-    if (!Array.isArray(input)) {
-      return [];
-    }
-    const reversed = [];
-    for (var i = input.length; i  >= 0; --i) {
-      reversed.push(input[i]);
-    }
-    return reversed;
-  }
+      static helper_reverse(input: any[]) {
+        if (!Array.isArray(input)) {
+          return [];
+        }
+        const reversed = [];
+        for (var i = input.length; i  >= 0; --i) {
+          reversed.push(input[i]);
+        }
+        return reversed;
+      }
 
-  static helper_stripTags(html: string) {
-    if (!html) {
-      return '';
-    }
-    return stripHtml(html);
-  }
+      static helper_stripTags(html: string) {
+        if (!html) {
+          return '';
+        }
+        return stripHtml(html);
+      }
 
-  static helper_stripTrailingSlash(input: string) {
-    if (typeof input === 'string' && input.endsWith('/')) {
-      return input.substr(0, input.length - 1);
-    } else {
-      return input;
-    }
-  }
+      static helper_stripTrailingSlash(input: string) {
+        if (typeof input === 'string' && input.endsWith('/')) {
+          return input.substr(0, input.length - 1);
+        } else {
+          return input;
+        }
+      }
 
-  static helper_customPaginate(value: number, maximum: number, innerRange: number, outerRange: number) {
-    if (!innerRange) innerRange = 2;
-    if (!outerRange) outerRange = 2;
-    const pagerefs = [];
-      for (var x = 1; x < maximum; x++){
+      static helper_customPaginate(value: number, maximum: number, innerRange: number, outerRange: number) {
+        if (!innerRange) innerRange = 2;
+        if (!outerRange) outerRange = 2;
+        const pagerefs = [];
+        for (var x = 1; x < maximum; x++){
           if (x <= outerRange && x <= value) pagerefs.push(x);
           else if (Math.abs(value - (x)) <= innerRange) pagerefs.push(x);
           else if (x >= maximum - outerRange) pagerefs.push(x);
           else if (x < value) {
-              pagerefs.push("...");
-              x = value - innerRange - 1;
+            pagerefs.push("...");
+            x = value - innerRange - 1;
           }
           else if (x > value) {
-              pagerefs.push("...");
-              x = maximum - outerRange - 1;
+            pagerefs.push("...");
+            x = maximum - outerRange - 1;
           }
-      }
-      return pagerefs;
-  }
-
-
-  static helper_stripDomains(input: string, domains: string[]) {
-    if (typeof input !== 'string' || !Array.isArray(domains)) {
-      return input;
-    }
-    domains = domains.filter(domain => typeof domain === 'string');
-    domains = domains.map((domain: string) => domain.replace(/\./g, '\\.'));
-    const domainRegex = '((https?)?:\\/\\/)((' + domains.join(')|(') + '))';
-    const domainStripper = new RegExp(domainRegex, 'ig');
-    const output = input.replace(domainStripper, '');
-    return output;
-  }
-
-  static helper_length(input: any[]|string) {
-    if (typeof input !== 'string' && !Array.isArray(input)) {
-      return -1;
-    }
-    return input.length;
-  }
-
-  static helper_any(input: any[]) {
-    if (!Array.isArray(input)) {
-      return false;
-    }
-    return input.length > 0;
-  }
-
-  static helper_entries(input: any) {
-    if (typeof input !== 'object') {
-      return [];
-    }
-    return Object.entries(input);
-  }
-
-  static helper_pluck(items: any[], path: string) {
-    if (typeof path !== 'string' || !Array.isArray(items)) {
-      return null;
-    }
-    const output: any[] = [];
-    items.forEach(item => {
-      const val = dot.pick(path, item);
-      output.push(val);
-    });
-
-    return output;
-  }
-
-  static helper_flatten(items: any[]) {
-    if (!Array.isArray(items)) {
-      return null;
-    }
-
-    var output: any[] = [];
-    items.forEach(item => {
-      if (Array.isArray(item)) {
-        output.push(...item);
-      } else {
-        output.push(item);
-      }
-    });
-
-    return output;
-  }
-
-  static helper_distinct(items: any[]) {
-    if (!Array.isArray(items)) {
-      return null;
-    }
-    const output: any[] = [];
-    items.forEach(item => {
-      if (output.indexOf(item) === -1) {
-        output.push(item);
-      }
-    });
-    return output;
-  }
-
-  static helper_filter(items: any[], property: string, comparator: string, test: any) {
-    const found: any[] = [];
-    items.forEach(item => {
-      const value: any = property === null ? item : dot.pick(property, item);
-      let match = false;
-      try {
-        switch (comparator) {
-          case ('==='): match = value === test;
-            break;
-          case ('=='): match = value == test;
-            break;
-          case ('>='): match = value >= test;
-            break;
-          case ('>'): match = value > test;
-            break;
-          case ('<='): match = value <= test;
-            break;
-          case ('<'): match = value < test;
-            break;
-          case ('testIn'): match = value.indexOf(test) > -1;
-            break;
-          case ('valueIn'): match = test.indexOf(value) > -1;
-            break;
-          case ('testNotIn'): match = value.indexOf(test) === -1;
-            break;
-          case ('valueNotIn'): match = test.indexOf(value) === -1;
-            break;
-          case ('exists'): match = !!property;
         }
-      } catch(err) { }
-      if (match) {
-        found.push(item);
+        return pagerefs;
       }
-    });
-    return found;
-  }
 
-  static helper_sort(items: any[]) {
-    if (!Array.isArray(items)) {
-      return items;
-    }
-    const out = items.sort();
-    return out;
-  }
 
-  static helper_sortBy(items: any[], property: string, direction: string) {
-    if (['asc', 'desc'].indexOf(direction) === -1) {
-      direction = 'asc';
-    }
-    const clone = JSON.parse(JSON.stringify(items));
-    clone.sort((a: any, b :any) => {
-      const valA = property ? dot.pick(property, a) || 0 : a;
-      const valB = property ? dot.pick(property, b) || 0 : b;
-      return direction === 'asc' ? valA - valB : valB - valA;
-    });
-    return clone;
-  }
-
-  static helper_withExtend(context: any) {
-    const args: IHelperArgs = arguments[1];
-    if (args.hash && Object.keys(args.hash).length > 0) {
-      for (const key of Object.keys(args.hash)) {
-        context[key] = args.hash[key];
+      static helper_stripDomains(input: string, domains: string[]) {
+        if (typeof input !== 'string' || !Array.isArray(domains)) {
+          return input;
+        }
+        domains = domains.filter(domain => typeof domain === 'string');
+        domains = domains.map((domain: string) => domain.replace(/\./g, '\\.'));
+        const domainRegex = '((https?)?:\\/\\/)((' + domains.join(')|(') + '))';
+        const domainStripper = new RegExp(domainRegex, 'ig');
+        const output = input.replace(domainStripper, '');
+        return output;
       }
-    }
-    return args.fn(context);
-  }
 
-  static helper_sortByIndex(items: any[], index: any[], property: string) {
-    if (!Array.isArray(items) || !Array.isArray(index) || typeof property !== 'string') {
-      return items;
-    }
+      static helper_length(input: any[]|string) {
+        if (typeof input !== 'string' && !Array.isArray(input)) {
+          return -1;
+        }
+        return input.length;
+      }
 
-    var clone: any[] = (JSON.parse(JSON.stringify(items)) as any[]);
+      static helper_any(input: any[]) {
+        if (!Array.isArray(input)) {
+          return false;
+        }
+        return input.length > 0;
+      }
 
-    clone.sort((a: any, b: any) => {
-      var prop1 = dot.pick(property, a);
-      var prop2 = dot.pick(property, b);
+      static helper_entries(input: any) {
+        if (typeof input !== 'object') {
+          return [];
+        }
+        return Object.entries(input);
+      }
 
-      var ind1 = index.indexOf(prop1);
-      var ind2 = index.indexOf(prop2);
+      static helper_pluck(items: any[], path: string) {
+        if (typeof path !== 'string' || !Array.isArray(items)) {
+          return null;
+        }
+        const output: any[] = [];
+        items.forEach(item => {
+          const val = dot.pick(path, item);
+          output.push(val);
+        });
 
-      ind1 = ind1 > -1 ? ind1 : Math.max(items.length, index.length) + 1;
-      ind2 = ind2 > -1 ? ind2 : Math.max(items.length, index.length) + 1;
+        return output;
+      }
 
-      return ind1 - ind2;
-    });
+      static helper_flatten(items: any[]) {
+        if (!Array.isArray(items)) {
+          return null;
+        }
 
-    return clone;
-  }
+        var output: any[] = [];
+        items.forEach(item => {
+          if (Array.isArray(item)) {
+            output.push(...item);
+          } else {
+            output.push(item);
+          }
+        });
 
-  static helper_component(partialName: string, options: any) {
-    if (typeof partialName !== 'string' ||
+        return output;
+      }
+
+      static helper_distinct(items: any[]) {
+        if (!Array.isArray(items)) {
+          return null;
+        }
+        const output: any[] = [];
+        items.forEach(item => {
+          if (output.indexOf(item) === -1) {
+            output.push(item);
+          }
+        });
+        return output;
+      }
+
+      static helper_filter(items: any[], property: string, comparator: string, test: any) {
+        const found: any[] = [];
+        items.forEach(item => {
+          const value: any = property === null ? item : dot.pick(property, item);
+          let match = false;
+          try {
+            switch (comparator) {
+              case ('==='): match = value === test;
+              break;
+              case ('=='): match = value == test;
+              break;
+              case ('>='): match = value >= test;
+              break;
+              case ('>'): match = value > test;
+              break;
+              case ('<='): match = value <= test;
+              break;
+              case ('<'): match = value < test;
+              break;
+              case ('testIn'): match = value.indexOf(test) > -1;
+              break;
+              case ('valueIn'): match = test.indexOf(value) > -1;
+              break;
+              case ('testNotIn'): match = value.indexOf(test) === -1;
+              break;
+              case ('valueNotIn'): match = test.indexOf(value) === -1;
+              break;
+              case ('exists'): match = !!property;
+            }
+          } catch(err) { }
+          if (match) {
+            found.push(item);
+          }
+        });
+        return found;
+      }
+
+      static helper_sort(items: any[]) {
+        if (!Array.isArray(items)) {
+          return items;
+        }
+        const out = items.sort();
+        return out;
+      }
+
+      static helper_sortBy(items: any[], property: string, direction: string) {
+        if (['asc', 'desc'].indexOf(direction) === -1) {
+          direction = 'asc';
+        }
+        const clone = JSON.parse(JSON.stringify(items));
+        clone.sort((a: any, b :any) => {
+          const valA = property ? dot.pick(property, a) || 0 : a;
+          const valB = property ? dot.pick(property, b) || 0 : b;
+          return direction === 'asc' ? valA - valB : valB - valA;
+        });
+        return clone;
+      }
+
+      static helper_withExtend(context: any) {
+        const args: IHelperArgs = arguments[1];
+        if (args.hash && Object.keys(args.hash).length > 0) {
+          for (const key of Object.keys(args.hash)) {
+            context[key] = args.hash[key];
+          }
+        }
+        return args.fn(context);
+      }
+
+      static helper_sortByIndex(items: any[], index: any[], property: string) {
+        if (!Array.isArray(items) || !Array.isArray(index) || typeof property !== 'string') {
+          return items;
+        }
+
+        var clone: any[] = (JSON.parse(JSON.stringify(items)) as any[]);
+
+        clone.sort((a: any, b: any) => {
+          var prop1 = dot.pick(property, a);
+          var prop2 = dot.pick(property, b);
+
+          var ind1 = index.indexOf(prop1);
+          var ind2 = index.indexOf(prop2);
+
+          ind1 = ind1 > -1 ? ind1 : Math.max(items.length, index.length) + 1;
+          ind2 = ind2 > -1 ? ind2 : Math.max(items.length, index.length) + 1;
+
+          return ind1 - ind2;
+        });
+
+        return clone;
+      }
+
+      static helper_component(partialName: string, options: any) {
+        if (typeof partialName !== 'string' ||
         !Helpers.handlebars.partials.hasOwnProperty(partialName)) {
-      return null;
+          return null;
+        }
+        const partial = Helpers.handlebars.partials[partialName];
+        const template = Helpers.handlebars.compile(partial);
+        const html = template(options);
+        return new Helpers.handlebars.SafeString(html)
+      }
+
+      static helper_log(message: string, obj: any) {
+        console.log('####', message, '->', obj);
+      }
+
+      static helper_switch(value: any) {
+        var args = Array.from( arguments );
+        var options = args.pop();
+        __switch_stack__.push({
+          switch_match : false,
+          switch_value : value
+        });
+        var html = options.fn( this );
+        __switch_stack__.pop();
+        return html;
+      }
+
+      static helper_case(value: any) {
+        var args = Array.from( arguments );
+        var options = args.pop();
+        var caseValues = args;
+        var stack = __switch_stack__[__switch_stack__.length - 1];
+        if ( stack.switch_match || caseValues.indexOf( stack.switch_value ) === -1 ) {
+          return '';
+        } else {
+          stack.switch_match = true;
+          return options.fn( this );
+        }
+      }
+
+      static helper_switchDefault() {
+        var args = Array.from( arguments );
+        var options = args.pop();
+        var stack = __switch_stack__[__switch_stack__.length - 1];
+        if ( !stack || !stack.switch_match ) {
+          return options.fn( this );
+        }
+        return '';
+      }
     }
-    const partial = Helpers.handlebars.partials[partialName];
-    const template = Helpers.handlebars.compile(partial);
-    const html = template(options);
-    return new Helpers.handlebars.SafeString(html)
-  }
 
-  static helper_log(message: string, obj: any) {
-    console.log('####', message, '->', obj);
-  }
-
-  static helper_switch(value: any) {
-    var args = Array.from( arguments );
-    var options = args.pop();
-    __switch_stack__.push({
-        switch_match : false,
-        switch_value : value
-    });
-    var html = options.fn( this );
-    __switch_stack__.pop();
-    return html;
-  }
-
-  static helper_case(value: any) {
-    var args = Array.from( arguments );
-    var options = args.pop();
-    var caseValues = args;
-    var stack = __switch_stack__[__switch_stack__.length - 1];
-    if ( stack.switch_match || caseValues.indexOf( stack.switch_value ) === -1 ) {
-      return '';
-    } else {
-      stack.switch_match = true;
-      return options.fn( this );
+    export interface IHelperArgs {
+      name: string;
+      hash: any;
+      data: any;
+      fn: (...args: any[]) => any;
     }
-  }
-
-  static helper_switchDefault() {
-    var args = Array.from( arguments );
-    var options = args.pop();
-    var stack = __switch_stack__[__switch_stack__.length - 1];
-    if ( !stack || !stack.switch_match ) {
-      return options.fn( this );
-    }
-    return '';
-  }
-}
-
-export interface IHelperArgs {
-  name: string;
-  hash: any;
-  data: any;
-  fn: (...args: any[]) => any;
-}
-/* tslint:enable */
+    /* tslint:enable */
