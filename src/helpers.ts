@@ -82,7 +82,7 @@ export class Helpers {
     return output;
   }
 
-  static helper_sumArray(input: number[]) {
+  static helper_sumArray(input: any[]) {
     if (!Array.isArray(input)) {
       return 0;
     }
