@@ -497,7 +497,7 @@ const emailerRequestHandler = async (request: Http.IncomingMessage, response: Ht
   response.end(Stringify(responses, null, 4));
 }
 
-async function processEmails(): Promise<RouterResponse|null> {
+async function processEmails(): Promise<{ [key: string]: RouterResponse }|null> {
   if (routers && routers.hasOwnProperty('emailer')) {
     const request: RouterRequest = {
       url: Url.parse('https://emailer.scvo.net/process'),
@@ -519,8 +519,8 @@ async function processEmails(): Promise<RouterResponse|null> {
     }; 
     try {
       const response = await routers.emailer.go(request);
-      const vsRespone = await routers.emailer.go(vsRequest);
-      return response;
+      const vsResponse = await routers.emailer.go(vsRequest);
+      return { main: response, vs: vsResponse };
     } catch(err) {
       console.error('Error mocking emailer.go with request:', request, err);
     }
