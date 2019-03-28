@@ -4,6 +4,7 @@ import stripHtml = require('string-strip-html');
 import markdown = require('markdown');
 const sqlstring: any = require('sqlstring');
 import stringify = require('json-stringify-safe');
+import * as jsonata from 'jsonata';
 const dot: any = require('dot-object');
 import * as moment from 'moment';
 import * as querystring from 'querystring';
@@ -740,6 +741,40 @@ export class Helpers {
           }
         });
         return output;
+      }
+
+      static helper_groupBy(input: any[], field: string) {
+        if (!Array.isArray(input) || !field) return {};
+
+        const output: any = {};
+        for (const item of input) {
+          if (!item || typeof item !== 'object') continue;
+          const key = (value => {
+            if (value === null) return 'null';
+            switch (typeof value) {
+              case ('string'): return value;
+              case ('number'): return value;
+              case ('boolean'): return value.toString();
+              default: return typeof value;
+            }
+          })(dot.pick(field, item));
+
+          output[key] ? output[key].push(item) : output[key] = [item];
+        }
+
+        return output;
+      }
+     
+      static helper_jsonata(input: any, expression: string) {
+        if (!input || typeof expression !== 'string') return {};
+        try {
+          const compiled = jsonata(expression);
+          const output = compiled.evaluate(input);
+          return output;
+        } catch (err) {
+          console.error('JSONata Helper ->', expression, err);
+          return {};
+        }
       }
 
       static helper_filter(items: any[], property: string, comparator: string, test: any) {
