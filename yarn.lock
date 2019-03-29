@@ -193,12 +193,12 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.64":
-  version "1.2.64"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.64.tgz#d5099d1f00ae06d3ea10303b67fee17ddf1d7f53"
+"@scvo/router@../router2":
+  version "1.2.65"
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "^4.0.38"
+    "@types/mailgun-js" "^0.16.3"
     "@types/mysql" "^2.15.5"
     "@types/request-promise-native" "^1.0.15"
     "@types/route-parser" "^0.1.1"
@@ -302,6 +302,12 @@
 "@types/long@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
+
+"@types/mailgun-js@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@types/mailgun-js/-/mailgun-js-0.16.3.tgz#655fade2c72c430a7a248d84839f8adc2c400e62"
+  dependencies:
+    "@types/node" "*"
 
 "@types/mime@^2.0.0":
   version "2.0.0"
