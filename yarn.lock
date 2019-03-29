@@ -193,8 +193,9 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@../router2":
+"@scvo/router@^1.2.65":
   version "1.2.65"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.65.tgz#8388ff4cbbfafc2fab46afcbba2db78b95d85db5"
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "^4.0.38"
@@ -2094,9 +2095,9 @@ jsforce@^1.9.1:
     request "^2.72.0"
     xml2js "^0.4.16"
 
-"json-e@https://github.com/scvodigital/json-e":
+"json-e@git+https://github.com/scvodigital/json-e.git":
   version "3.0.0"
-  resolved "https://github.com/scvodigital/json-e#f7741d6e4417b781f765a5398fff00eef3027929"
+  resolved "git+https://github.com/scvodigital/json-e.git#f7741d6e4417b781f765a5398fff00eef3027929"
   dependencies:
     json-stable-stringify "^1.0.1"
 
