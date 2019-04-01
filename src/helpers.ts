@@ -9,6 +9,7 @@ const dot: any = require('dot-object');
 import * as moment from 'moment';
 import * as querystring from 'querystring';
 const s: any = require('string');
+const crypto = require('crypto');
 import * as Url from 'url';
 import * as util from 'util';
 import * as dateMath from '@elastic/datemath';
@@ -42,6 +43,13 @@ export class Helpers {
       return input;
     }
     return [input];
+  }
+
+  static helper_hash(input: string, algorithm: string) {
+    input = input || '';
+    algorithm = ['sha1', 'md5'].indexOf(algorithm) > -1 ? algorithm : 'sha1';
+    const output = crypto.createHash(algorithm).update(input).digest('hex');
+    return output;
   }
 
   static helper_getKeys(input: any) {
