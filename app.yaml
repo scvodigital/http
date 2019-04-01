@@ -3,6 +3,11 @@ env: flex
 runtime: nodejs
 api_version: '1.0'
 threadsafe: true
+automatic_scaling:
+  min_num_instances: 2
+  max_num_instances: 5
+  cpu_utilization:
+    target_utilization: 0.5
 
 network: {}
 
