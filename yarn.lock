@@ -193,12 +193,12 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.65":
-  version "1.2.65"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.65.tgz#8388ff4cbbfafc2fab46afcbba2db78b95d85db5"
+"@scvo/router@^1.2.67":
+  version "1.2.67"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.67.tgz#f6150139539570a8b428904e9e52e4e61bcc737e"
   dependencies:
     "@types/elasticsearch" "^5.0.24"
-    "@types/handlebars" "^4.0.38"
+    "@types/handlebars" "4.0.38"
     "@types/mailgun-js" "^0.16.3"
     "@types/mysql" "^2.15.5"
     "@types/request-promise-native" "^1.0.15"
@@ -210,7 +210,7 @@
     elasticsearch "^15.0.0"
     firebase-admin "6.1.0"
     googleapis "^35.0.0"
-    handlebars "^4.0.11"
+    handlebars "4.0.12"
     jsforce "^1.9.1"
     json-e "https://github.com/scvodigital/json-e"
     json-logic-js "^1.2.2"
@@ -276,9 +276,9 @@
     "@types/node" "*"
     "@types/request" "*"
 
-"@types/handlebars@^4.0.38":
-  version "4.0.40"
-  resolved "https://registry.yarnpkg.com/@types/handlebars/-/handlebars-4.0.40.tgz#b714e13d296a75bff3f199316d1311933ca79ffd"
+"@types/handlebars@4.0.38":
+  version "4.0.38"
+  resolved "https://registry.yarnpkg.com/@types/handlebars/-/handlebars-4.0.38.tgz#d0ebec1934c0bba97f99a0cb703fe2ef8c4a662f"
 
 "@types/http-errors@^1.5.32":
   version "1.6.1"
@@ -1717,7 +1717,7 @@ gtoken@^2.3.0:
     mime "^2.2.0"
     pify "^3.0.0"
 
-handlebars@^4.0.11, handlebars@^4.0.12, handlebars@^4.0.6:
+handlebars@4.0.12, handlebars@^4.0.6:
   version "4.0.12"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.12.tgz#2c15c8a96d46da5e266700518ba8cb8d919d5bc5"
   dependencies:
