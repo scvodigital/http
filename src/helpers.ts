@@ -222,6 +222,36 @@ export class Helpers {
     return json;
   }
 
+  /**
+   * Converts data into form which is acceptable under CSV. Adapted from
+   * @param obj
+   */
+  static helper_csvStringify(obj:any, separator: string){
+    if (!separator) separator = ",";
+    var specialChars = new RegExp('["\r\n' + separator + ']', 'gm');
+
+    if (obj === undefined || obj ===  null || obj === "null") {
+      obj = '';
+    }
+    if (typeof obj != 'string') {
+      var s = obj.toString();
+      if (s == '[object Object]') {
+        obj = JSON.stringify(obj);
+        if (obj == '{}') {
+          obj = '';
+        }
+      }
+      else {
+        obj = s;
+      }
+    }
+    else if (obj.search(specialChars)) {
+      obj = '"' + obj.replace("'", '""') + '"';
+    }
+    return obj;
+  }
+
+
   static helper_eachJoin(input: any[], separator: string, options: any) {
     var items: string[] = [];
 
@@ -236,6 +266,7 @@ export class Helpers {
     var out = items.join(', ');
     return out;
   }
+
 
   static helper_eachMap(input: any, options: any) {
     if (!input) return null;
