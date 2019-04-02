@@ -457,11 +457,15 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
 
 GetBody.textTypes.push('application/x-ndjson');
 async function getBody(request: Http.IncomingMessage): Promise<any> {
-  if (!request.headers.hasOwnProperty('content-type')) {
-    request.headers['content-type'] = 'text/plain';
+  try {
+    if (!request.headers.hasOwnProperty('content-type')) {
+      request.headers['content-type'] = 'text/plain';
+    }
+    const body = await GetBody.parse(request, request.headers as GetBody.Headers);
+    return body;
+  } catch(err) {
+    return {};
   }
-  const body = await GetBody.parse(request, request.headers as GetBody.Headers);
-  return body;
 }
 
 function sleep(ms: number): Promise<void> {
