@@ -13,6 +13,7 @@ const crypto = require('crypto');
 import * as Url from 'url';
 import * as util from 'util';
 import * as dateMath from '@elastic/datemath';
+const JSON6: any = require('json-6');
 
 /* tslint:disable */
 export interface Handlebars { registerHelper: (...args: any[]) => void; }
@@ -228,6 +229,35 @@ export class Helpers {
   static helper_safeStringify(obj: any) {
     var json = stringify(obj, null, 4);
     return json;
+  }
+
+  static helper_json(options: Handlebars.HelperOptions) {
+    let value = options.hash.value || null;
+    if (options.fn) {
+      const type = options.hash.type || 'object';
+      const block = options.fn(this) || '';
+      switch (type) {
+        case ('array'):
+          value = JSON6.parse('[' + block + ']');
+          break;
+        case ('object'):
+          value = JSON6.parse('{' + block + '}');
+          break;
+        case ('number'):
+          value = parseInt(block) || -1;
+          break;
+        case ('boolean'):
+          value = Boolean(block) || false;
+          break;
+        default:
+          value = block;
+      }
+    }
+    if (options.hash.key) {
+      return stringify(options.hash.key) + ': ' + stringify(value, null, 4);
+    } else {
+      return stringify(value, null, 4);
+    }
   }
 
   /**
@@ -803,7 +833,7 @@ export class Helpers {
 
         return output;
       }
-     
+
       static helper_jsonata(input: any, expression: string) {
         if (!input || typeof expression !== 'string') return {};
         try {
