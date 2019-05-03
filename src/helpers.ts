@@ -6,7 +6,7 @@ const sqlstring: any = require('sqlstring');
 import stringify = require('json-stringify-safe');
 import * as jsonata from 'jsonata';
 const dot: any = require('dot-object');
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import * as querystring from 'querystring';
 const s: any = require('string');
 const crypto = require('crypto');
@@ -556,6 +556,19 @@ export class Helpers {
         return date.format();
       } else {
         return date.format(format);
+      }
+    }
+
+    static helper_momentConvertTz(input: moment.Moment, inputTz: string, outputTz: string) {
+      if (!input || !input.format) return null;
+      try {
+        inputTz = typeof inputTz === 'string' ? inputTz : 'UTC';
+        outputTz = typeof outputTz === 'string' ? outputTz : 'Europe/London';
+        const date = moment.tz(input, inputTz);
+        date.tz(outputTz);
+        return date;
+      } catch(err) {
+        return null;
       }
     }
 
