@@ -238,10 +238,20 @@ export class Helpers {
       const block = options.fn(this) || '';
       switch (type) {
         case ('array'):
-          value = JSON6.parse('[' + block + ']');
+          try {
+            value = JSON6.parse('[' + block + ']');
+          } catch(err) {
+            console.error('Failed to parse json', '\n[\n' + block + '\n]\n', err);
+            throw err;
+          }
           break;
         case ('object'):
-          value = JSON6.parse('{' + block + '}');
+          try {
+            value = JSON6.parse('{' + block + '}');
+          } catch(err) {
+            console.error('Failed to parse json', '\n{\n' + block + '\n}\n', err);
+            throw err;
+          }
           break;
         case ('number'):
           value = parseInt(block) || -1;
