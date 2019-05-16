@@ -738,6 +738,40 @@ export class Helpers {
         }
       }
 
+      static helper_minimum() {
+        try {
+          let minimum: number|null = null;
+          for (let input of Array.from(arguments)) {
+            if (Number.isInteger(input)) {
+              if (minimum === null || minimum > input) {
+                minimum = input;
+              }
+            }
+          }
+          return minimum;
+        } catch(err) {
+          console.error('Minimum Helper ->', err);
+          return null;
+        }
+      }
+
+      static helper_maximum() {
+        try {
+          let maximum: number|null = null;
+          for (let input of Array.from(arguments)) {
+            if (Number.isInteger(input)) {
+              if (maximum === null || maximum < input) {
+                maximum = input;
+              }
+            }
+          }
+          return maximum;
+        } catch(err) {
+          console.error('Maximum Helper ->', err);
+          return null;
+        }
+      }
+
       static helper_customPaginate(value: number, maximum: number, innerRange: number, outerRange: number) {
         if (!innerRange) innerRange = 2;
         if (!outerRange) outerRange = 2;
