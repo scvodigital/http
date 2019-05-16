@@ -193,9 +193,10 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.71":
-  version "1.2.71"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.71.tgz#1aa24af8e688391ee2cb4a1a071437bf04d3d060"
+"@scvo/router@^1.2.72":
+  version "1.2.72"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.72.tgz#2bbcd3302859e0a6cb1c7a4f54a2b408b8c6086f"
+  integrity sha512-7W2H2Nw6I+r7hF6BTdgHaiFJWTUQGMaM1L2ykjuZVlAGzXsoXOkFBpKOkBU61AF7917JlC5lGl5QZm8Ieoh63A==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "4.0.38"
@@ -2105,9 +2106,9 @@ json-6@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/json-6/-/json-6-1.0.2.tgz#efb0324395c6170b5543ab1e1cd699277a8f7983"
 
-"json-e@https://github.com/scvodigital/json-e":
+"json-e@git+https://github.com/scvodigital/json-e.git":
   version "3.0.0"
-  resolved "https://github.com/scvodigital/json-e#f7741d6e4417b781f765a5398fff00eef3027929"
+  resolved "git+https://github.com/scvodigital/json-e.git#f7741d6e4417b781f765a5398fff00eef3027929"
   dependencies:
     json-stable-stringify "^1.0.1"
 
