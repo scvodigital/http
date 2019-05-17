@@ -1043,6 +1043,54 @@ export class Helpers {
         }
         return '';
       }
+
+      static helper_elseIfBlock(options: Handlebars.HelperOptions) {
+        try {
+          options.data['@elseIf'] = options.data['@elseIf'] || [];
+          options.data['@elseIf'].push(false);
+
+          let output = options.fn(options.data);
+          const level = options.data['@elseIf'].length - 1;
+
+          if (options.data['@elseIf'][level] === false) {
+            if (options.inverse) {
+              output = options.inverse(options.data);
+            } else {
+              output = '';
+            }
+          }
+
+          options.data['@elseIf'].pop();
+          if (options.data['@elseIf'].length === 0) {
+            delete options.data['@elseIf'];
+          }
+          return output;
+        } catch(err) {
+          console.error('ElseIfBlock Failed', (options.data['@elseIf'] || 'No @elseIf'), err);
+          return '';
+        }
+      }
+
+      static helper_elseIf(value: any) {
+        var args = Array.from(arguments);
+        var options: Handlebars.HelperOptions = args.pop();
+        try {
+          const level = options.data['@elseIf'].length - 1;
+          if (options.data['@elseIf'][level] === true) {
+            return '';
+          }
+
+          if (!!value) {
+            options.data['@elseIf'][level] = true;
+            return options.fn(options.data);
+          } else {
+            return '';
+          }
+        } catch(err) {
+          console.error('ElseIf Failed', (options.data['@elseIf'] || 'No @elseIf'), err);
+          return '';
+        }
+      }
     }
 
     export interface IHelperArgs {
