@@ -35,5 +35,7 @@ dispatch:
     service: router
   - url: "search.volunteerscotland.net/*"
     service: router
+  - url: "sdgadvocate.org/*"
+    service: router
   - url: "digitalcheckup.org/*"
     service: router
