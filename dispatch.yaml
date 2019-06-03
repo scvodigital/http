@@ -27,8 +27,6 @@ dispatch:
     service: router
   - url: "digitalparticipation.scot/*"
     service: router
-  - url: "*.digitalparticipation.scot/*"
-    service: router
   - url: "humanrightsdeclaration.scot/*"
     service: router
   - url: "scotlandforeurope.scot/*"
@@ -36,8 +34,6 @@ dispatch:
   - url: "search.volunteerscotland.net/*"
     service: router
   - url: "sdgadvocate.org/*"
-    service: router
-  - url: "*.sdgadvocate.org/*"
     service: router
   - url: "*.mpowerhealth.eu/*"
     service: router
