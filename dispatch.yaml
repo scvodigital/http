@@ -37,6 +37,8 @@ dispatch:
     service: router
   - url: "sdgadvocate.org/*"
     service: router
+  - url: "*.sdgadvocate.org/*"
+    service: router
   - url: "*.mpowerhealth.eu/*"
     service: router
   - url: "digitalcheckup.org/*"
