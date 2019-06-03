@@ -17,8 +17,6 @@ dispatch:
     service: router
   - url: "getinvolved.org.uk/*"
     service: router
-  - url: "fundingscotland.com/*"
-    service: router
   - url: "*.fundingscotland.com/*"
     service: router
   - url: "*.test.fundingscotland.com/*"
@@ -26,8 +24,6 @@ dispatch:
   - url: "emailer.scvo.net/*"
     service: router
   - url: "digitalparticipation.scot/*"
-    service: router
-  - url: "*.digitalparticipation.scot/*"
     service: router
   - url: "humanrightsdeclaration.scot/*"
     service: router
@@ -37,7 +33,7 @@ dispatch:
     service: router
   - url: "sdgadvocate.org/*"
     service: router
-  - url: "*.sdgadvocate.org/*"
+  - url: "mpowerhealth.eu/*"
     service: router
   - url: "*.mpowerhealth.eu/*"
     service: router
