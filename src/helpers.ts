@@ -231,6 +231,12 @@ export class Helpers {
     return json;
   }
 
+  static numberLines(text: string) {
+    return text.split(/\r?\n/g).map((item: string, index: number) => {
+      return `${index + 1}: ${item || ''}`;
+    }).join('\n');
+  }
+
   static helper_json(options: Handlebars.HelperOptions) {
     let value = options.hash.value || null;
     if (options.fn) {
@@ -241,7 +247,7 @@ export class Helpers {
           try {
             value = JSON6.parse('[' + block + ']');
           } catch(err) {
-            console.error('Failed to parse json', '\n[\n' + block + '\n]\n', err);
+            console.error('Failed to parse json', '\n' + Helpers.numberLines('[\n' + block + '\n]') + '\n', err);
             throw err;
           }
           break;
@@ -249,7 +255,7 @@ export class Helpers {
           try {
             value = JSON6.parse('{' + block + '}');
           } catch(err) {
-            console.error('Failed to parse json', '\n{\n' + block + '\n}\n', err);
+            console.error('Failed to parse json', '\n' + Helpers.numberLines('{\n' + block + '\n}') + '\n', err);
             throw err;
           }
           break;

@@ -5,6 +5,8 @@ dispatch:
     service: router
   - url: "scvo.org.uk/*"
     service: router
+  - url: "emailer.scvo.net/*"
+    service: router
   - url: "goodmoves.com/*"
     service: router
   - url: "goodmoves.scot/*"
@@ -15,13 +17,11 @@ dispatch:
     service: router
   - url: "getinvolved.scot/*"
     service: router
-  - url: "getinvolved.org.uk/*"
+  - url: "digitalcheckup.org/*"
     service: router
   - url: "*.fundingscotland.com/*"
     service: router
   - url: "*.test.fundingscotland.com/*"
-    service: router
-  - url: "emailer.scvo.net/*"
     service: router
   - url: "digitalparticipation.scot/*"
     service: router
@@ -31,11 +31,11 @@ dispatch:
     service: router
   - url: "search.volunteerscotland.net/*"
     service: router
+  - url: "*.saltireawards.org.uk/*"
+    service: router
   - url: "sdgadvocate.org/*"
     service: router
   - url: "mpowerhealth.eu/*"
     service: router
   - url: "*.mpowerhealth.eu/*"
-    service: router
-  - url: "digitalcheckup.org/*"
     service: router
