@@ -19,9 +19,9 @@ dispatch:
     service: router
   - url: "digitalcheckup.org/*"
     service: router
-  - url: "*.fundingscotland.com/*"
+  - url: "fundingscotland.com/*"
     service: router
-  - url: "*.test.fundingscotland.com/*"
+  - url: "*.fundingscotland.com/*"
     service: router
   - url: "digitalparticipation.scot/*"
     service: router
