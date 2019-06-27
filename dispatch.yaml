@@ -23,8 +23,6 @@ dispatch:
     service: router
   - url: "*.fundingscotland.com/*"
     service: router
-  - url: "*.test.fundingscotland.com/*"
-    service: router
   - url: "digitalparticipation.scot/*"
     service: router
   - url: "humanrightsdeclaration.scot/*"
