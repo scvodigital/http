@@ -19,6 +19,8 @@ dispatch:
     service: router
   - url: "digitalcheckup.org/*"
     service: router
+  - url: "fundingscotland.com/*"
+    service: router
   - url: "*.fundingscotland.com/*"
     service: router
   - url: "*.test.fundingscotland.com/*"
