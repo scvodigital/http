@@ -1,6 +1,4 @@
 dispatch:
-  - url: "scvo.net/*"
-    service: default
   - url: "scvo.org/*"
     service: router
   - url: "scvo.org.uk/*"
