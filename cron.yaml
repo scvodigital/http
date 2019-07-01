@@ -2,4 +2,4 @@ cron:
   - description: "Email queue processor"
     url: /emailer/process-proxy
     schedule: every 1 minutes
-    target: router
+    target: default
