@@ -1,4 +1,4 @@
-service: router
+service: default
 env: flex
 runtime: nodejs
 api_version: '1.0'
