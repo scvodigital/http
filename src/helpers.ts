@@ -190,14 +190,15 @@ export class Helpers {
   }
 
   static helper_querystringify(obj: any = {}) {
+    const clone = JSON.parse(JSON.stringify(obj));
     const args: IHelperArgs = arguments[1];
     const newObj: any = {};
     if (args && args.hash) {
-      Object.assign(obj, args.hash);
+      Object.assign(clone, args.hash);
     }
-    Object.keys(obj).sort().forEach((key) => {
-      if (obj[key]) {
-        newObj[key] = obj[key];
+    Object.keys(clone).sort().forEach((key) => {
+      if (clone[key]) {
+        newObj[key] = clone[key];
         if (Array.isArray(newObj[key])) {
           newObj[key].sort();
         }
