@@ -37,3 +37,5 @@ dispatch:
     service: default
   - url: "*.mpowerhealth.eu/*"
     service: default
+  - url: "*.thirdforcenews.scot/*"
+    service: default
