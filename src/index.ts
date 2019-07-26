@@ -15,7 +15,7 @@ import { exec as Exec, execSync as ExecSync } from 'child_process'
 import { CONFIG } from './config';
 import { Map } from './interfaces';
 import { Helpers } from './helpers';
-import { JsoneHelpers } from './jsone-helpers'; 
+import { JsoneHelpers } from './jsone-helpers';
 import { Err as Error } from './err';
 
 // External Imports
@@ -35,11 +35,11 @@ require('source-map-support').install();
 
 // Router Imports
 import {
-  Router, RouterConfiguration, RouterRequest, RouterResponse, 
-  HttpVerb, RendererHandlebars, RendererJsone, TaskElasticsearch, 
-  TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest, 
+  Router, RouterConfiguration, RouterRequest, RouterResponse,
+  HttpVerb, RendererHandlebars, RendererJsone, TaskElasticsearch,
+  TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest,
   TaskRender, TaskFirebaseAuth, TaskFirebaseGetUser, TaskFirebaseGetSession,
-  TaskFirebaseRtbGet, TaskReroute, TaskFirebaseRtbSet, TaskTransform, 
+  TaskFirebaseRtbGet, TaskReroute, TaskFirebaseRtbSet, TaskTransform,
   TaskMailgun, TaskGeneratePdf, TaskGAGet, TaskSalesforceBulk, TaskSalesforceApex
 } from '@scvo/router';
 /**
@@ -111,7 +111,7 @@ if (LIVE) {
     console.log('FILEWATCHER -> Site configurations changed, reloading routers');
 		try {
       // If there is a change, reload the routers
-    	await reloadRouters();    
+    	await reloadRouters();
       ExecSync('notify-send -a "SCVO Router" -t 10000 -u normal "Sites reloaded"');
 		} catch(err) {
 			console.error('Failed to reload routers:', err);
@@ -165,7 +165,7 @@ async function reloadRouters() {
 
       // Stick the data in our sites map
       sites = sitesSnapshot.val() as Map<RouterConfiguration>;
-    // If we are not live (running in a development environment)  
+    // If we are not live (running in a development environment)
     } else {
       console.log('Loading routers locally using this glob:', SITES_GLOB);
 
@@ -203,7 +203,7 @@ async function reloadRouters() {
 
       // Create the new router instance and store it in our global router map
       routers[name] = new Router(config, taskModules, renderers);
-    } 
+    }
 
     console.log('Routers reloaded:', domainMap);
   } catch(err) {
@@ -270,18 +270,18 @@ const requestHandler = async (request: Http.IncomingMessage, response: Http.Serv
   } else if (request.url && request.url.startsWith('/readiness_check')) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/plain');
-    response.end('Readiness check, OK!'); 
+    response.end('Readiness check, OK!');
   } else if (request.url && request.url.startsWith('/liveness_check')) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/plain');
-    response.end('Liveness check, OK!'); 
+    response.end('Liveness check, OK!');
   } else {
     await routerRequestHandler(request, response);
   }
 }
 
 /*
- * Handle any incoming requests for anything in '/assets/'. 
+ * Handle any incoming requests for anything in '/assets/'.
  * Return files from CONFIG.localSitesDir/{{requested site}}/*
  * This should never happen in live
  */
@@ -370,7 +370,7 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     }
 
     const url = Url.parse(fullUrl);
-   
+
     // Get the site name
     const siteName = getRequestSiteName(request);
 
@@ -394,7 +394,7 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     for (const [header, value] of Object.entries(routerResponse.headers)) {
       response.setHeader(header, value);
     }
-    
+
     // Loop through all set cookies in the router response and add them to our HTTP response
 		for (const [cookieName, cookie] of Object.entries(routerResponse.cookies)) {
 			const options = (cookie.options || {}) as Cookie.CookieSerializeOptions;
@@ -413,8 +413,8 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     let bodyBuffer: Buffer | undefined;
     let contentType = 'application/json';
 
-    // If we have been given a string by the router, set the response body and type to 
-    // that set in the router response, otherwise make sure we have valid JSON to return 
+    // If we have been given a string by the router, set the response body and type to
+    // that set in the router response, otherwise make sure we have valid JSON to return
     // and set the content type to 'application/json'
     if (typeof routerResponse.body === 'string') {
       contentType = routerResponse.contentType || 'text/html';
@@ -445,6 +445,14 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     }
     response.setHeader('Content-Type', contentType);
     response.statusCode = routerResponse.statusCode || 200;
+
+    //HACK: Replace this with Task Module for modifying headers
+    if (fullUrl.includes('widget')) {
+      response.setHeader('Access-Control-Allow-Origin', '*');
+      response.setHeader('Access-Control-Request-Method', '*');
+      response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+      response.setHeader('Access-Control-Allow-Headers', '*');
+    }
 
     // Send our HTTP response with the GZipped buffer
     response.end(bodyBuffer);
@@ -512,7 +520,7 @@ async function processEmails(): Promise<{ [key: string]: RouterResponse }|null> 
       cookies: {},
       verb: 'GET',
       body: null
-    }; 
+    };
     const vsRequest: RouterRequest = {
       url: Url.parse('https://emailer.scvo.net/vs-process'),
       fullUrl: 'https://emailer.scvo.net/vs-process',
@@ -521,7 +529,7 @@ async function processEmails(): Promise<{ [key: string]: RouterResponse }|null> 
       cookies: {},
       verb: 'GET',
       body: null
-    }; 
+    };
     try {
       const response = await routers.emailer.go(request);
       const vsResponse = await routers.emailer.go(vsRequest);
@@ -571,7 +579,7 @@ if (LIVE) {
     }
   });
 } else {
-  const options: Https.ServerOptions = { 
+  const options: Https.ServerOptions = {
     key: Fs.readFileSync(Path.join(__dirname, '../test-cert/_wildcard.local-key.pem')),
     cert: Fs.readFileSync(Path.join(__dirname, '../test-cert/_wildcard.local.pem'))
   };
