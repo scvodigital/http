@@ -447,7 +447,7 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     response.statusCode = routerResponse.statusCode || 200;
 
     //HACK: Replace this with Task Module for modifying headers
-    if (fullUrl.includes('widget')) {
+    if (fullUrl.includes('widget') || fullUrl.includes('geo-lookup')) {
       response.setHeader('Access-Control-Allow-Origin', '*');
       response.setHeader('Access-Control-Request-Method', '*');
       response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
