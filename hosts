@@ -38,4 +38,16 @@
 127.0.0.1   mpowerhealth-finnvalley.local
 127.0.0.1   mpowerhealth-southleitrim.local
 
+127.0.0.1   cms.scvo.local
+127.0.0.1   cms.goodmoves.local
+127.0.0.1   cms.thirdforcenews.local
+127.0.0.1   cms.fs-default.local
+127.0.0.1   cms.fs-eastrenfrewshire.local
+127.0.0.1   cms.fs-fife.local
+127.0.0.1   cms.fs-northlanarkshire.local
+127.0.0.1   cms.fs-shetland.local
+127.0.0.1   cms.fs-southlanarkshire.local
+127.0.0.1   cms.fs-srn.local
+127.0.0.1   cms.fs-stirling.local
+
 # End of file
