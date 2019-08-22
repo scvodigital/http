@@ -21,6 +21,7 @@
 127.0.0.1   volunteerscotland-search.local
 
 127.0.0.1   fs-default.local
+127.0.0.1   fs-eastayrshire.local
 127.0.0.1   fs-eastrenfrewshire.local
 127.0.0.1   fs-fife.local
 127.0.0.1   fs-northlanarkshire.local
@@ -43,6 +44,7 @@
 127.0.0.1   cms.goodmoves.local
 127.0.0.1   cms.thirdforcenews.local
 127.0.0.1   cms.fs-default.local
+127.0.0.1   cms.fs-eastayrshire.local
 127.0.0.1   cms.fs-eastrenfrewshire.local
 127.0.0.1   cms.fs-fife.local
 127.0.0.1   cms.fs-northlanarkshire.local
@@ -50,5 +52,14 @@
 127.0.0.1   cms.fs-southlanarkshire.local
 127.0.0.1   cms.fs-srn.local
 127.0.0.1   cms.fs-stirling.local
+127.0.0.1   cms.mpowerhealth.local
+127.0.0.1   cms.mpowerhealth-ayrshirearran.local
+127.0.0.1   cms.mpowerhealth-dumfriesgalloway.local
+127.0.0.1   cms.mpowerhealth-westernisles.local
+127.0.0.1   cms.mpowerhealth-fermanagh.local
+127.0.0.1   cms.mpowerhealth-newrysoutharmagh.local
+127.0.0.1   cms.mpowerhealth-droghedacarrickmacross.local
+127.0.0.1   cms.mpowerhealth-finnvalley.local
+127.0.0.1   cms.mpowerhealth-southleitrim.local
 
 # End of file
