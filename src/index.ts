@@ -40,7 +40,8 @@ import {
   TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest,
   TaskRender, TaskFirebaseAuth, TaskFirebaseGetUser, TaskFirebaseGetSession,
   TaskFirebaseRtbGet, TaskReroute, TaskFirebaseRtbSet, TaskTransform,
-  TaskMailgun, TaskGeneratePdf, TaskGAGet, TaskSalesforceBulk, TaskSalesforceApex
+  TaskMailgun, TaskGeneratePdf, TaskGAGet, TaskGASet, TaskSalesforceBulk,
+  TaskSalesforceApex
 } from '@scvo/router';
 /**
  * END: Node imports
@@ -252,6 +253,7 @@ function createTaskModules(): Map<any> {
     mailgun: new TaskMailgun(CONFIG.mailgunAccounts),
     request: new TaskRequest(CONFIG.requestSecrets),
     gaGet: new TaskGAGet(CONFIG.googleAccounts),
+    gaSet: new TaskGASet(),
     salesforceBulk: new TaskSalesforceBulk(CONFIG.salesforceAccounts),
     salesforceApex: new TaskSalesforceApex(CONFIG.salesforceAccounts),
     reroute: new TaskReroute()
@@ -452,6 +454,7 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
       response.setHeader('Access-Control-Request-Method', '*');
       response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
       response.setHeader('Access-Control-Allow-Headers', '*');
+      response.setHeader('Content-Type', 'text/html; charset=utf-8');
     }
 
     // Send our HTTP response with the GZipped buffer

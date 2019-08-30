@@ -184,6 +184,16 @@ export class Helpers {
     return protocol + '://' + url;
   }
 
+  static helper_parseUrl(urlString: string) {
+    try {
+      const url = Url.parse(urlString);
+      return url;
+    } catch (err) {
+      console.error('parseUrl Helper -> Invalid input Url', urlString, err);
+      return null;
+    }
+  }
+
   static helper_dateMath(expression: string) {
     const output: Date = dateMath.parse(expression);
     return output;
