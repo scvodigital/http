@@ -193,10 +193,8 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.76":
+"@scvo/router@../router":
   version "1.2.76"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.76.tgz#bc13a6e8bfb52af7d69ceacac0a70102dde25c19"
-  integrity sha512-zgpiWOMmPu9Ws/b77Um/L8Yls7QX39RP1BB63Wp11WWRpY9Zd4E9/FAotPAJIgMDj26qKGWzbzyAAOaQwNTlxw==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/handlebars" "4.0.38"
