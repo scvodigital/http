@@ -249,7 +249,7 @@ export class Helpers {
   }
 
   static helper_json(options: Handlebars.HelperOptions) {
-    let value = options.hash.value || null;
+    let value = typeof options.hash.value === 'undefined' ? null : options.hash.value
     if (options.fn) {
       const type = options.hash.type || 'object';
       const block = options.fn(this) || '';
