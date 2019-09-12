@@ -39,6 +39,12 @@ export class Helpers {
     return parts;
   }
 
+  static helper_regexSplit(str: string, rgDelimiter: string) {
+    var regex = new RegExp(rgDelimiter);
+    const parts = !str ? [] : str.split(regex);
+    return parts;
+  }
+
   static helper_arrayify(input: any) {
     if (Array.isArray(input)) {
       return input;
