@@ -219,14 +219,12 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@1.2.78":
-  version "1.2.78"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.78.tgz#a0b52dae827ce3c5965c5a8d1e9f97ae2fd6496a"
-  integrity sha512-cZDgOsB1Bs3altmXdf83pI7LFILLcRXd83RbQjd+bBXmLuBrG9ENVPXfoLamyrn8IE+HcrhVdcxCm/cCH+zbyw==
+"@scvo/router@^1.2.83":
+  version "1.2.83"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.83.tgz#e5ea2f95a3fa9c4bcab1119bb9a72ed9c1506b9e"
+  integrity sha512-JlRO1PLWTVqBhLYnPXgkWfVdoOpMBc5+qgbSnUeB2oI5fDZH5LrmtEm/uM2qRKRyyxZ+vcRLou6Mcz021c/ZCw==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
-    "@types/handlebars" "4.0.38"
-    "@types/mailgun-js" "^0.16.3"
     "@types/mysql" "^2.15.5"
     "@types/request-promise-native" "^1.0.15"
     "@types/route-parser" "^0.1.1"
@@ -238,7 +236,7 @@
     elasticsearch "^15.0.0"
     firebase-admin "6.1.0"
     googleapis "^35.0.0"
-    handlebars "4.0.12"
+    handlebars "^4.1.2"
     jsforce "^1.9.1"
     json-e "https://github.com/scvodigital/json-e"
     json-logic-js "^1.2.2"
@@ -315,11 +313,6 @@
     "@types/node" "*"
     "@types/request" "*"
 
-"@types/handlebars@4.0.38":
-  version "4.0.38"
-  resolved "https://registry.yarnpkg.com/@types/handlebars/-/handlebars-4.0.38.tgz#d0ebec1934c0bba97f99a0cb703fe2ef8c4a662f"
-  integrity sha512-oMzU0D7jDp+H2go/i0XqBHfr+HEhYD/e1TvkhHi3yrhQm/7JFR8FJMdvoH76X8G1FBpgc6Pwi+QslCJBeJ1N9g==
-
 "@types/http-errors@^1.5.32":
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/@types/http-errors/-/http-errors-1.6.2.tgz#8d613d31be6871d093ef4640ae3272507156ba59"
@@ -349,13 +342,6 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
   integrity sha512-1w52Nyx4Gq47uuu0EVcsHBxZFJgurQ+rTKS3qMHxR1GY2T8c2AJYd6vZoZ9q1rupaDjU0yT+Jc2XTyXkjeMA+Q==
-
-"@types/mailgun-js@^0.16.3":
-  version "0.16.4"
-  resolved "https://registry.yarnpkg.com/@types/mailgun-js/-/mailgun-js-0.16.4.tgz#c847712ad4bb1f458bbbdd2c10c87934513b75ad"
-  integrity sha512-KM6/7g7ux29LoeuVsePqvd4WjvSGBmxc6ewS94GS68w673Gyo1JIP4oF/dhoRhIT+zIe+T/3LNXK9u2czWDLOA==
-  dependencies:
-    "@types/node" "*"
 
 "@types/mime@^2.0.0":
   version "2.0.1"
@@ -819,6 +805,19 @@ brfs@^2.0.2:
     static-module "^3.0.2"
     through2 "^2.0.0"
 
+bristles@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/bristles/-/bristles-0.0.12.tgz#ef59a02662c8f61e1007f5f36217701903d45833"
+  integrity sha512-MSrbejgjZUczGdxRP6AaZZFqqYy95160q5Xn1idQy5w5aNXav6HdWuYcULiR7br9dJMl31iOpFyvD/F5K9KRoA==
+  dependencies:
+    deep-diff "^1.0.2"
+    deepmerge "^3.3.0"
+    dot-object "^1.8.1"
+    fast-safe-stringify "^2.0.6"
+    handlebars "^4.1.2"
+    json-6 "^1.0.2"
+    string "^3.3.3"
+
 brotli@^1.2.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/brotli/-/brotli-1.3.2.tgz#525a9cad4fcba96475d7d388f6aecb13eed52f46"
@@ -1084,10 +1083,14 @@ comma-it@0.0.7:
   resolved "https://registry.yarnpkg.com/comma-it/-/comma-it-0.0.7.tgz#31f4581b9c443427318cedff91f9ca8d024bc31b"
   integrity sha1-MfRYG5xENCcxjO3/kfnKjQJLwxs=
 
-commander@^2.20.0, commander@^2.9.0, commander@~2.20.0:
+commander@^2.20.0, commander@~2.20.0:
   version "2.20.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
   integrity sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
+
+commander@^2.9.0:
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
 component-emitter@^1.2.1:
   version "1.3.0"
@@ -1288,6 +1291,11 @@ deep-is@~0.1.3:
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
 
+deepmerge@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-3.3.0.tgz#d3c47fd6f3a93d517b14426b0628a17b0125f5f7"
+  integrity sha512-GRQOafGHwMHpjPx9iCvTgpu9NojZ49q794EEL94JVEw6VaeA8XTUyBKvAkOOjBX9oJNiV6G3P+T+tihFjo2TqA==
+
 define-properties@^1.1.2:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/define-properties/-/define-properties-1.1.3.tgz#cf88da6cbee26fe6db7094f61d870cbd84cee9f1"
@@ -1374,7 +1382,7 @@ dom-storage@2.1.0:
   resolved "https://registry.yarnpkg.com/dom-storage/-/dom-storage-2.1.0.tgz#00fb868bc9201357ea243c7bcfd3304c1e34ea39"
   integrity sha512-g6RpyWXzl0RR6OTElHKBl7nwnK87GUyZMYC7JWsB/IA73vpqK2K6LT39x4VepLxlSsWBFrPVLnsSR5Jyty0+2Q==
 
-dot-object@^1.7.0:
+dot-object@^1.7.0, dot-object@^1.8.1:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/dot-object/-/dot-object-1.9.0.tgz#6e3d6d8379f794c5174599ddf05528f5990f076e"
   integrity sha512-7MPN6y7XhAO4vM4eguj5+5HNKLjJYfkVG1ZR1Aput4Q4TR6SYeSjhpVQ77IzJHoSHffKbDxBC+48aCiiRurDPw==
@@ -1717,6 +1725,11 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
+
+fast-safe-stringify@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/fast-safe-stringify/-/fast-safe-stringify-2.0.6.tgz#04b26106cc56681f51a044cfc0d76cf0008ac2c2"
+  integrity sha512-q8BZ89jjc+mz08rSxROs8VsrBBcn1SIw1kq9NjolL509tkABRk9io01RAjSaEv1Xb2uFLt8VtRiZbGp5H8iDtg==
 
 faye-websocket@0.11.1:
   version "0.11.1"
@@ -2147,7 +2160,18 @@ gtoken@^2.3.0:
     mime "^2.2.0"
     pify "^4.0.0"
 
-handlebars@4.0.12:
+handlebars@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.1.0.tgz#0d6a6f34ff1f63cecec8423aa4169827bf787c3a"
+  integrity sha512-l2jRuU1NAWK6AW5qqcTATWQJvNPEwkM7NEKSiv/gqOsoSQbVoWyqVEY5GS+XPQ88zLNmqASRpzfdm8d79hJS+w==
+  dependencies:
+    async "^2.5.0"
+    optimist "^0.6.1"
+    source-map "^0.6.1"
+  optionalDependencies:
+    uglify-js "^3.1.4"
+
+handlebars@^4.0.6:
   version "4.0.12"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.12.tgz#2c15c8a96d46da5e266700518ba8cb8d919d5bc5"
   integrity sha512-RhmTekP+FZL+XNhwS1Wf+bTTZpdLougwt5pcgA1tuz6Jcx0fpH/7z0qd71RKnZHBCxIRBHfBOnio4gViPemNzA==
@@ -2158,7 +2182,7 @@ handlebars@4.0.12:
   optionalDependencies:
     uglify-js "^3.1.4"
 
-handlebars@^4.0.6:
+handlebars@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.1.2.tgz#b6b37c1ced0306b221e094fc7aca3ec23b131b67"
   integrity sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==
@@ -2626,9 +2650,9 @@ json-6@^1.0.2:
   resolved "https://registry.yarnpkg.com/json-6/-/json-6-1.0.2.tgz#efb0324395c6170b5543ab1e1cd699277a8f7983"
   integrity sha512-2LOtbWHnCRCYOjnuPtJLp2uZO+KmJoBk96yDRMsop+Kb3B4JqbPdEScYxImxcQ20N6a8VOtuKUo8ElHptc80kw==
 
-"json-e@https://github.com/scvodigital/json-e":
+"json-e@git+https://github.com/scvodigital/json-e.git":
   version "3.0.0"
-  resolved "https://github.com/scvodigital/json-e#f7741d6e4417b781f765a5398fff00eef3027929"
+  resolved "git+https://github.com/scvodigital/json-e.git#f7741d6e4417b781f765a5398fff00eef3027929"
   dependencies:
     json-stable-stringify "^1.0.1"
 

@@ -30,6 +30,7 @@ import * as Cookie from 'cookie';
 import * as Pako from 'pako';
 const IsGzip = require('is-gzip');
 import * as GetBody from 'get-body';
+import { BristlesFactory } from 'bristles';
 
 require('source-map-support').install();
 
@@ -190,6 +191,7 @@ async function reloadRouters() {
       // Create Renderer instances to be used in the site's router instances
       const renderers = {
         handlebars: createHandlebarsRenderer(config.metaData.handlebars.partials),
+        bristles: createBristlesRenderer(config.metaData.handlebars.partials),
         jsone: new RendererJsone(JsoneHelpers)
       };
 
@@ -210,6 +212,15 @@ async function reloadRouters() {
   } catch(err) {
     throw new Error('Failed to reload routers', err);
   }
+}
+
+function createBristlesRenderer(partials: Map<string>): RendererHandlebars {
+  const hbsEnv = Handlebars.create();
+  const bristles = BristlesFactory(hbsEnv);
+  for (const [name, partial] of Object.entries(partials)) {
+    bristles.registerPartial(name, partial);
+  }
+  return new RendererHandlebars(bristles);
 }
 
 /*
