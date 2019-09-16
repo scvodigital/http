@@ -188,24 +188,28 @@ async function reloadRouters() {
 
     // Loop through each of the configurations in the sites map
     for (const [name, config] of Object.entries(sites)) {
-      // Create Renderer instances to be used in the site's router instances
-      const renderers = {
-        handlebars: createHandlebarsRenderer(config.metaData.handlebars.partials),
-        bristles: createBristlesRenderer(config.metaData.handlebars.partials),
-        jsone: new RendererJsone(JsoneHelpers)
-      };
+      try {
+        // Create Renderer instances to be used in the site's router instances
+        const renderers = {
+          handlebars: createHandlebarsRenderer(config.metaData.handlebars.partials),
+          bristles: createBristlesRenderer(config.metaData.handlebars.partials),
+          jsone: new RendererJsone(JsoneHelpers)
+        };
 
-      // Add each of the site's domains to the domain map
-      for (const domain of config.domains) {
-        domainMap[domain] = name;
+        // Add each of the site's domains to the domain map
+        for (const domain of config.domains) {
+          domainMap[domain] = name;
+        }
+
+        // Inject live/dev helper properties to the site's metaData
+        config.metaData.live = LIVE;
+        config.metaData.dev = !LIVE;
+
+        // Create the new router instance and store it in our global router map
+        routers[name] = new Router(config, taskModules, renderers);
+      } catch(err) {
+        console.error(`Site '${name}' failed to load`, err);
       }
-
-      // Inject live/dev helper properties to the site's metaData
-      config.metaData.live = LIVE;
-      config.metaData.dev = !LIVE;
-
-      // Create the new router instance and store it in our global router map
-      routers[name] = new Router(config, taskModules, renderers);
     }
 
     console.log('Routers reloaded:', domainMap);
