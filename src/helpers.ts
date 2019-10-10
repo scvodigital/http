@@ -715,6 +715,10 @@ export class Helpers {
       return input.substring(start, end);
     }
 
+    static helper_raw(options: any) {
+      return options.fn(this);
+    }
+
     static helper_regexReplace(
       input: string, expression: string, options: string, replace: string) {
         if (typeof input !== 'string') {
