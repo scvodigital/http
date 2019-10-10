@@ -9,7 +9,7 @@ import * as Url from 'url';
 import * as Querystring from 'url';
 import * as Path from 'path';
 import * as Fs from 'fs';
-import { exec as Exec, execSync as ExecSync } from 'child_process'
+import { exec as Exec, execSync as ExecSync, spawn as Spawn, ChildProcess } from 'child_process'
 
 // Internal Imports
 import { CONFIG } from './config';
@@ -56,7 +56,7 @@ import {
 const HTTP_PORT: number = Number(process.env.PORT) || CONFIG.defaultHttpPort;
 const LIVE: boolean = !!process.env.GAE_SERVICE;
 const FIREBASE_SITES_PATH: string = CONFIG.firebasePath;
-const SITES_GLOB: string = Path.join(CONFIG.localSitesDir, '**/*-site.json')
+const SITES_GLOB: string = Path.join(CONFIG.localSitesDir, '*/build/config.json')
 /**
  * END: Application constants
  * @region
@@ -88,6 +88,8 @@ let domainMap: Map<string> = {};
  * @region
  */
 
+const webpackThreads: { [site: string]: ChildProcess } = {};
+
 /*
  * Setup auto reload of site configurations
  */
@@ -102,23 +104,54 @@ if (LIVE) {
     await reloadRouters();
   });
 } else {
-  // Setup a file watcher to look out for changes to local site configuration files
-  const watcher = Chokidar.watch(SITES_GLOB, {
-    awaitWriteFinish: true
-  });
-  console.log('FILEWATCHER -> Monitoring the following glob for changes:', SITES_GLOB);
+  // if (process.env.SITES) {
+  //   for (const site of process.env.SITES.split(/\s*,\s*/g)) {
+  //     const path = Path.join(CONFIG.localSitesDir, site);
+  //     console.log(`Spawning process for '${site}' in ${path}`);
+  //     const process = Exec('npm start', {
+  //       cwd: path
+  //     });
+  //     process.on('error', (err) => {
+  //       console.error(`Site '${site}' webpack process threw an error`, err);
+  //     });
+  //     process.on('close', (code, signal) => {
+  //       console.error(`Site '${site}' webpack process closed.\n\tCode: ${code}\n\tSignal: ${signal}`);
+  //     });
+  //     webpackThreads[site] = process;
+  //   }
+  // }
 
-  // Create a 'change' event handler for the file watcher
-  watcher.on('change', async (path: string) => {
-    console.log('FILEWATCHER -> Site configurations changed, reloading routers');
-		try {
-      // If there is a change, reload the routers
-    	await reloadRouters();
-      ExecSync('notify-send -a "SCVO Router" -t 10000 -u normal "Sites reloaded"');
-		} catch(err) {
-			console.error('Failed to reload routers:', err);
-		}
-  });
+  // setTimeout(() => {
+    // Setup a file watcher to look out for changes to local site configuration files
+    const watcher = Chokidar.watch(SITES_GLOB, {
+      awaitWriteFinish: true,
+
+    });
+    console.log('FILEWATCHER -> Monitoring the following glob for changes:', SITES_GLOB);
+
+    // Create a 'change' event handler for the file watcher
+    watcher.on('change', async (path: string) => {
+      console.log('FILEWATCHER -> Site configurations changed, reloading routers');
+      try {
+        // If there is a change, reload the routers
+        await reloadRouters();
+        ExecSync('notify-send -a "SCVO Router" -t 10000 -u normal "Sites reloaded"');
+      } catch(err) {
+        console.error('Failed to reload routers:', err);
+      }
+    });
+
+    watcher.on('add', async (path: string) => {
+      console.log('FILEWATCHER -> Site configurations changed, reloading routers');
+      try {
+        // If there is a change, reload the routers
+        await reloadRouters();
+        ExecSync('notify-send -a "SCVO Router" -t 10000 -u normal "Sites reloaded"');
+      } catch(err) {
+        console.error('Failed to reload routers:', err);
+      }
+    });
+  // }, 15000);
 }
 
 /*
@@ -171,13 +204,22 @@ async function reloadRouters() {
     } else {
       console.log('Loading routers locally using this glob:', SITES_GLOB);
 
-      // Get the paths of all site configuration files from the assets build directory
-      const sitesPaths = await Globby(SITES_GLOB);
+      let sitesPaths: string[] = [];
+      try {
+        // Get the paths of all site configuration files from the assets build directory
+        sitesPaths = await Globby(SITES_GLOB, {
+          ignore: ['**/node_modules/**']
+        });
+      } catch (err) {
+        console.error('Failed to get local site configs', err);
+      }
 
       // Loop through each of these site configuration files
       for (const sitePath of sitesPaths) {
         // Work out the site name from the file name
-        const siteName = Path.basename(sitePath).split('-site.json')[0];
+        const siteDir = sitePath.replace('/build/config.json', '');
+        const siteName = Path.basename(siteDir);
+
         console.log('Loading site:', siteName, 'from', sitePath);
 
         // Read the site configuration into a variable and add it to our sites map
@@ -309,7 +351,7 @@ const assetsRequestHandler = async (request: Http.IncomingMessage, response: Htt
 
     // Work out the path to the requested file
     const url = (request.url as string).split('/assets/')[1];
-    const path = Path.join(CONFIG.localSitesDir, siteName, url || '');
+    const path = Path.join(CONFIG.localSitesDir, siteName, 'build', url || '');
 
     // Get a stat object to get the length of the file
     const stat = Fs.statSync(path);
