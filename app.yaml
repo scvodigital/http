@@ -32,4 +32,5 @@ liveness_check:
   success_threshold: 2
 
 env_variables:
-  USE_GAE_MEMCACHE: 1
+  REDISHOST: '<REDIS_IP>'
+  REDISPORT: '6379'
