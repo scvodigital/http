@@ -219,13 +219,14 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.83":
-  version "1.2.83"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.83.tgz#e5ea2f95a3fa9c4bcab1119bb9a72ed9c1506b9e"
-  integrity sha512-JlRO1PLWTVqBhLYnPXgkWfVdoOpMBc5+qgbSnUeB2oI5fDZH5LrmtEm/uM2qRKRyyxZ+vcRLou6Mcz021c/ZCw==
+"@scvo/router@^1.2.86":
+  version "1.2.86"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.86.tgz#78dfb1e3ec9b5724d6c38d5b6168e0934ace4ebf"
+  integrity sha512-yXjas8OVeU2NmPBIhpDm5YbEcpVKd08EvELqiM0biCiEnBNMeyyfp+cdyOoAGPszn4Rm3B4xuiFT9LB7ANB8Tg==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/mysql" "^2.15.5"
+    "@types/redis" "^2.8.14"
     "@types/request-promise-native" "^1.0.15"
     "@types/route-parser" "^0.1.1"
     "@types/universal-analytics" "^0.4.3"
@@ -237,7 +238,7 @@
     firebase-admin "6.1.0"
     googleapis "^35.0.0"
     handlebars "^4.1.2"
-    jsforce "^1.9.1"
+    jsforce "^1.9.2"
     json-e "https://github.com/scvodigital/json-e"
     json-logic-js "^1.2.2"
     json-stringify-safe "^5.0.1"
@@ -246,6 +247,7 @@
     node-json-transform "^1.0.16"
     nodemailer "^4.6.8"
     pdfmake "^0.1.38"
+    redis "^2.8.0"
     request "^2.87.0"
     request-promise-native "^1.0.5"
     route-parser "^0.0.5"
@@ -396,6 +398,13 @@
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
+
+"@types/redis@^2.8.14":
+  version "2.8.14"
+  resolved "https://registry.yarnpkg.com/@types/redis/-/redis-2.8.14.tgz#2ed46d0f923f7ccd63fbe73a46a1241e606cf716"
+  integrity sha512-255dzsOLJdXFHBio9/aMHGozNkoiBUgc+g2nlNjbTSp5qcAlmpm4Z6Xs3pKOBLNIKdZbA2BkUxWvYSIwKra0Yw==
+  dependencies:
+    "@types/node" "*"
 
 "@types/request-promise-native@^1.0.15":
   version "1.0.16"
@@ -1396,6 +1405,11 @@ dot-prop@^4.1.0:
   integrity sha512-tUMXrxlExSW6U2EXiiKGSBVdYgtV8qlHL+C10TsW4PURY/ic+eaysnSkwB4kA/mBlCyy/IKDJ+Lc3wbWeaXtuQ==
   dependencies:
     is-obj "^1.0.0"
+
+double-ended-queue@^2.1.0-0:
+  version "2.1.0-0"
+  resolved "https://registry.yarnpkg.com/double-ended-queue/-/double-ended-queue-2.1.0-0.tgz#103d3527fd31528f40188130c841efdd78264e5c"
+  integrity sha1-ED01J/0xUo9AGIEwyEHv3XgmTlw=
 
 duplexer2@~0.1.4:
   version "0.1.4"
@@ -2624,7 +2638,7 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
 
-jsforce@^1.9.1:
+jsforce@^1.9.2:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/jsforce/-/jsforce-1.9.2.tgz#e9fb4723d41689bc76bf08475349b8a323f7400f"
   integrity sha512-E+5Krib1geeHQNYDVllq71eDG1lixS/LufmI+HkSLHKsP7g4JvaSPm27azDQyQNfoT4TRL0FjCsFSM5azwpkeQ==
@@ -2650,9 +2664,9 @@ json-6@^1.0.2:
   resolved "https://registry.yarnpkg.com/json-6/-/json-6-1.0.2.tgz#efb0324395c6170b5543ab1e1cd699277a8f7983"
   integrity sha512-2LOtbWHnCRCYOjnuPtJLp2uZO+KmJoBk96yDRMsop+Kb3B4JqbPdEScYxImxcQ20N6a8VOtuKUo8ElHptc80kw==
 
-"json-e@https://github.com/scvodigital/json-e":
+"json-e@git+https://github.com/scvodigital/json-e.git":
   version "3.0.0"
-  resolved "https://github.com/scvodigital/json-e#f7741d6e4417b781f765a5398fff00eef3027929"
+  resolved "git+https://github.com/scvodigital/json-e.git#f7741d6e4417b781f765a5398fff00eef3027929"
   dependencies:
     json-stable-stringify "^1.0.1"
 
@@ -3893,6 +3907,25 @@ readdirp@^2.2.1:
     graceful-fs "^4.1.11"
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
+
+redis-commands@^1.2.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/redis-commands/-/redis-commands-1.5.0.tgz#80d2e20698fe688f227127ff9e5164a7dd17e785"
+  integrity sha512-6KxamqpZ468MeQC3bkWmCB1fp56XL64D4Kf0zJSwDZbVLLm7KFkoIcHrgRvQ+sk8dnhySs7+yBg94yIkAK7aJg==
+
+redis-parser@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/redis-parser/-/redis-parser-2.6.0.tgz#52ed09dacac108f1a631c07e9b69941e7a19504b"
+  integrity sha1-Uu0J2srBCPGmMcB+m2mUHnoZUEs=
+
+redis@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/redis/-/redis-2.8.0.tgz#202288e3f58c49f6079d97af7a10e1303ae14b02"
+  integrity sha512-M1OkonEQwtRmZv4tEWF2VgpG0JWJ8Fv1PhlgT5+B+uNq2cA3Rt1Yt/ryoR+vQNOQcIEgdCdfH0jr3bDpihAw1A==
+  dependencies:
+    double-ended-queue "^2.1.0-0"
+    redis-commands "^1.2.0"
+    redis-parser "^2.6.0"
 
 regenerator-runtime@^0.11.0:
   version "0.11.1"

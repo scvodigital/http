@@ -38,7 +38,7 @@ require('source-map-support').install();
 import {
   Router, RouterConfiguration, RouterRequest, RouterResponse,
   HttpVerb, RendererHandlebars, RendererJsone, TaskElasticsearch,
-  TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest,
+  TaskMySQL, TaskRedirect, TaskRenderLayout, TaskRequest, TaskCacheFlush,
   TaskRender, TaskFirebaseAuth, TaskFirebaseGetUser, TaskFirebaseGetSession,
   TaskFirebaseRtbGet, TaskReroute, TaskFirebaseRtbSet, TaskTransform,
   TaskMailgun, TaskGeneratePdf, TaskGAGet, TaskGASet, TaskSalesforceBulk,
@@ -313,7 +313,8 @@ function createTaskModules(): Map<any> {
     gaSet: new TaskGASet(),
     salesforceBulk: new TaskSalesforceBulk(CONFIG.salesforceAccounts),
     salesforceApex: new TaskSalesforceApex(CONFIG.salesforceAccounts),
-    reroute: new TaskReroute()
+    reroute: new TaskReroute(),
+    cacheFlush: new TaskCacheFlush(),
   };
   return routerTaskModules;
 }
