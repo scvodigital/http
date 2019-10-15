@@ -219,10 +219,10 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.86":
-  version "1.2.86"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.86.tgz#78dfb1e3ec9b5724d6c38d5b6168e0934ace4ebf"
-  integrity sha512-yXjas8OVeU2NmPBIhpDm5YbEcpVKd08EvELqiM0biCiEnBNMeyyfp+cdyOoAGPszn4Rm3B4xuiFT9LB7ANB8Tg==
+"@scvo/router@^1.2.87":
+  version "1.2.87"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.87.tgz#496877ec9e32b991480410b02d99b685992fabaa"
+  integrity sha512-lJWoBBgara4DjeX56kmU4SNJw3W890AI5Z6JeIMXBsgDXNJIHXy3lyPS40nZPma9IA82DJtckzY/XEbbIXfkPA==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/mysql" "^2.15.5"
