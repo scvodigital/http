@@ -1,4 +1,4 @@
-service: default
+service: production
 env: flex
 runtime: nodejs
 api_version: '1.0'
