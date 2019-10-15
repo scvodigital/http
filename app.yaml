@@ -1,4 +1,4 @@
-service: development
+service: default
 env: flex
 runtime: nodejs
 
@@ -9,7 +9,7 @@ automatic_scaling:
     target_utilization: 0.5
 
 env_variables:
-  REDISHOST: '<REDIS_IP>'
+  REDISHOST: '10.57.114.123'
   REDISPORT: '6379'
 
 network:
