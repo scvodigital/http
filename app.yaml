@@ -1,13 +1,16 @@
 service: production
 env: flex
 runtime: nodejs
-api_version: '1.0'
-threadsafe: true
+
 automatic_scaling:
   min_num_instances: 2
   max_num_instances: 5
   cpu_utilization:
     target_utilization: 0.5
+
+env_variables:
+  REDISHOST: '<REDIS_IP>'
+  REDISPORT: '6379'
 
 network:
   name: default
@@ -31,7 +34,3 @@ liveness_check:
   timeout_sec: 4
   failure_threshold: 2
   success_threshold: 2
-
-env_variables:
-  REDISHOST: '<REDIS_IP>'
-  REDISPORT: '6379'
