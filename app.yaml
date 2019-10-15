@@ -1,4 +1,4 @@
-service: production
+service: development
 env: flex
 runtime: nodejs
 
