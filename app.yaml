@@ -1,4 +1,4 @@
-service: development
+service: default
 env: flex
 runtime: nodejs
 
