@@ -219,10 +219,10 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.88":
-  version "1.2.88"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.88.tgz#4172e299ba8817eb840976611f273781309579d4"
-  integrity sha512-qgS0ei5210rs7oSIzs17owaUYyBx9qoXsAkyRoVbhtvt1KOKwBR55BziQqQfQwEavd3gmNn4s9y1J3o6/KRXUA==
+"@scvo/router@1.2.89":
+  version "1.2.89"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.89.tgz#032cc2fa26ff6d5f702bea68e54e47f6ee2b2630"
+  integrity sha512-ngw0C4hp9SPY3+wk52bT1aRMCX7nkkVVxHbnPSA4RxAtXjNj+U2udjyHnmX4pwO8Cb+v4PrrB2TXBB1rdm4FTQ==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/mysql" "^2.15.5"
@@ -237,7 +237,7 @@
     elasticsearch "^15.0.0"
     firebase-admin "6.1.0"
     googleapis "^35.0.0"
-    handlebars "^4.1.2"
+    handlebars "4.1.2"
     jsforce "^1.9.2"
     json-e "https://github.com/scvodigital/json-e"
     json-logic-js "^1.2.2"
@@ -669,7 +669,7 @@ async-each@^1.0.1:
   resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.3.tgz#b727dbf87d7651602f06f4d4ac387f47d91b0cbf"
   integrity sha512-z/WhQ5FPySLdvREByI2vZiTWwCnF0moMJ1hK9YQwDTHKh6I7/uSckMetoRGb5UBZPC1z0jlw+n/XCgjeH7y1AQ==
 
-async@^2.0.1, async@^2.3.0, async@^2.4.0, async@^2.5.0, async@^2.6.1:
+async@^2.0.1, async@^2.3.0, async@^2.4.0, async@^2.6.1:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.3.tgz#d72625e2344a3656e3a3ad4fa749fa83299d82ff"
   integrity sha512-zflvls11DCy+dQWzTW2dzuilv8Z5X/pjfmZOWba6TNIVDm+2UDaJmXSOXlasHKfNBs8oo3M0aT50fDEWfKZjXg==
@@ -806,16 +806,16 @@ brfs@^2.0.2:
     static-module "^3.0.2"
     through2 "^2.0.0"
 
-bristles@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/bristles/-/bristles-0.0.12.tgz#ef59a02662c8f61e1007f5f36217701903d45833"
-  integrity sha512-MSrbejgjZUczGdxRP6AaZZFqqYy95160q5Xn1idQy5w5aNXav6HdWuYcULiR7br9dJMl31iOpFyvD/F5K9KRoA==
+bristles@0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/bristles/-/bristles-0.0.16.tgz#ead89055a5b24ced39e5466b4608b2522543c8bf"
+  integrity sha512-QbQZ38btmecV1SAOHo+NYrV9v3ym5r7uryYW4Eqofrpemrr3IBvdiWgTe8iUc+IhEs2jPi4pe3Qh68O7/5Hs1A==
   dependencies:
     deep-diff "^1.0.2"
     deepmerge "^3.3.0"
     dot-object "^1.8.1"
     fast-safe-stringify "^2.0.6"
-    handlebars "^4.1.2"
+    handlebars "4.1.2"
     json-6 "^1.0.2"
     string "^3.3.3"
 
@@ -2196,18 +2196,18 @@ gtoken@^2.3.0:
     mime "^2.2.0"
     pify "^4.0.0"
 
-handlebars@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.1.0.tgz#0d6a6f34ff1f63cecec8423aa4169827bf787c3a"
-  integrity sha512-l2jRuU1NAWK6AW5qqcTATWQJvNPEwkM7NEKSiv/gqOsoSQbVoWyqVEY5GS+XPQ88zLNmqASRpzfdm8d79hJS+w==
+handlebars@4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.1.2.tgz#b6b37c1ced0306b221e094fc7aca3ec23b131b67"
+  integrity sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==
   dependencies:
-    async "^2.5.0"
+    neo-async "^2.6.0"
     optimist "^0.6.1"
     source-map "^0.6.1"
   optionalDependencies:
     uglify-js "^3.1.4"
 
-handlebars@^4.0.6, handlebars@^4.1.2:
+handlebars@^4.0.6:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.4.3.tgz#180bae52c1d0e9ec0c15d7e82a4362d662762f6e"
   integrity sha512-B0W4A2U1ww3q7VVthTKfh+epHx+q4mCt6iK+zEAzbMBpWQAwxCeKxEGpj/1oQTpzPXDNSOG7hmG14TsISH50yw==
