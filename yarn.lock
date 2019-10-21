@@ -219,10 +219,10 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@^1.2.87":
-  version "1.2.87"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.87.tgz#496877ec9e32b991480410b02d99b685992fabaa"
-  integrity sha512-lJWoBBgara4DjeX56kmU4SNJw3W890AI5Z6JeIMXBsgDXNJIHXy3lyPS40nZPma9IA82DJtckzY/XEbbIXfkPA==
+"@scvo/router@^1.2.88":
+  version "1.2.88"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.88.tgz#4172e299ba8817eb840976611f273781309579d4"
+  integrity sha512-qgS0ei5210rs7oSIzs17owaUYyBx9qoXsAkyRoVbhtvt1KOKwBR55BziQqQfQwEavd3gmNn4s9y1J3o6/KRXUA==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/mysql" "^2.15.5"
@@ -246,7 +246,7 @@
     mysql "^2.15.0"
     node-json-transform "^1.0.16"
     nodemailer "^4.6.8"
-    pdfmake "^0.1.38"
+    pdfmake "^0.1.60"
     redis "^2.8.0"
     request "^2.87.0"
     request-promise-native "^1.0.5"
@@ -3561,7 +3561,7 @@ pdfkit@>=0.8.1, pdfkit@^0.10.0:
     linebreak "^0.3.0"
     png-js ">=0.1.0"
 
-pdfmake@^0.1.38:
+pdfmake@^0.1.60:
   version "0.1.60"
   resolved "https://registry.yarnpkg.com/pdfmake/-/pdfmake-0.1.60.tgz#d6067e30651a70c9095c37c504eae2137a675d28"
   integrity sha512-vu+d9xaspGfMB0cNfH+CSet3q+Ip7/CRsx1LJLv2ToMduSTzqE4oTxjZQkPLB9LOL+36zT1SvbNvs0qoxusz1A==
