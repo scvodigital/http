@@ -750,6 +750,14 @@ export class Helpers {
         return reversed;
       }
 
+      static helper_uppercase(input: any) {
+        if (typeof input !== 'string') {
+          return input;
+        } else {
+          return input.toUpperCase();
+        }
+      }
+
       static helper_stripTags(html: string) {
         if (!html) {
           return '';
