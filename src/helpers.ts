@@ -938,6 +938,25 @@ export class Helpers {
         }
       }
 
+      static helper_unique(input: any[], property: string) {
+        if (!Array.isArray(input)) {
+          return null;
+        }
+
+        const tests: any[] = [];
+        const output: any[] = [];
+
+        for (const item of input) {
+          const test = typeof property === 'string' ? dot.pick(property, item) : item;
+          if (!tests.includes(test)) {
+            tests.push(test);
+            output.push(item);
+          }
+        }
+
+        return output;
+      }
+
       static helper_filter(items: any[], property: string, comparator: string, test: any) {
         const found: any[] = [];
         items.forEach(item => {
