@@ -54,7 +54,7 @@ export class Helpers {
 
   static helper_hash(input: string, algorithm: string) {
     input = input || '';
-    algorithm = ['sha1', 'md5'].indexOf(algorithm) > -1 ? algorithm : 'sha1';
+    algorithm = ['sha1', 'md5', 'sha256'].indexOf(algorithm) > -1 ? algorithm : 'sha1';
     const output = crypto.createHash(algorithm).update(input).digest('hex');
     return output;
   }
