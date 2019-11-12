@@ -334,7 +334,7 @@ export class Helpers {
       return !!item.replace(/\s|\r|\n/gi, '');
     });
 
-    var out = items.join(', ');
+    var out = items.join(typeof separator === 'string' ? separator : ', ');
     return out;
   }
 
