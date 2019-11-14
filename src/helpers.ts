@@ -59,6 +59,14 @@ export class Helpers {
     return output;
   }
 
+  static helper_hmac(input: string, algorithm: string, key:string) {
+    input = input || '';
+    algorithm = ['sha1', 'md5', 'sha256'].indexOf(algorithm) > -1 ? algorithm : 'sha1';
+    const output = crypto.createHmac(algorithm, key).update(input).digest('hex');
+    return output;
+  }
+
+
   static helper_getKeys(input: any) {
     if (!input) {
       return null;
