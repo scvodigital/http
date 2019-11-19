@@ -421,8 +421,11 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
       fullUrl = fullUrl.substr(0, fullUrl.length - 1);
     }
 
+    const userAgent = request.headers['user-agent'] || '';
+    const appEngine = userAgent.toLowerCase().indexOf('appengine') > -1
+    
     // If the request is not secure, redirect to HTTPS url generated above
-    if (secure === false) {
+    if (secure === false && !appEngine) {
       response.statusCode = 301;
       response.setHeader('Location', fullUrl);
       response.end();
