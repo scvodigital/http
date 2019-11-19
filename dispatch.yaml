@@ -1,41 +1,43 @@
 dispatch:
-  - url: "scvo.org/*"
+  - url: "*/*"
     service: default
-  - url: "scvo.org.uk/*"
-    service: default
-  - url: "emailer.scvo.net/*"
-    service: default
-  - url: "goodmoves.com/*"
-    service: default
-  - url: "goodmoves.scot/*"
-    service: default
-  - url: "goodmoves.be/*"
-    service: default
-  - url: "goodmoves.org.uk/*"
-    service: default
-  - url: "getinvolved.scot/*"
-    service: default
-  - url: "digitalcheckup.org/*"
-    service: default
-  - url: "fundingscotland.com/*"
-    service: default
-  - url: "*.fundingscotland.com/*"
-    service: default
-  - url: "digitalparticipation.scot/*"
-    service: default
-  - url: "humanrightsdeclaration.scot/*"
-    service: default
-  - url: "scotlandforeurope.scot/*"
-    service: default
-  - url: "search.volunteerscotland.net/*"
-    service: default
-  - url: "*.saltireawards.org.uk/*"
-    service: default
-  - url: "sdgadvocate.org/*"
-    service: default
-  - url: "mpowerhealth.eu/*"
-    service: default
-  - url: "*.mpowerhealth.eu/*"
-    service: default
-  - url: "*.thirdforcenews.scot/*"
-    service: default
+  # - url: "scvo.org/*"
+  #   service: default
+  # - url: "scvo.org.uk/*"
+  #   service: default
+  # - url: "emailer.scvo.net/*"
+  #   service: default
+  # - url: "goodmoves.com/*"
+  #   service: default
+  # - url: "goodmoves.scot/*"
+  #   service: default
+  # - url: "goodmoves.be/*"
+  #   service: default
+  # - url: "goodmoves.org.uk/*"
+  #   service: default
+  # - url: "getinvolved.scot/*"
+  #   service: default
+  # - url: "digitalcheckup.org/*"
+  #   service: default
+  # - url: "fundingscotland.com/*"
+  #   service: default
+  # - url: "*.fundingscotland.com/*"
+  #   service: default
+  # - url: "digitalparticipation.scot/*"
+  #   service: default
+  # - url: "humanrightsdeclaration.scot/*"
+  #   service: default
+  # - url: "scotlandforeurope.scot/*"
+  #   service: default
+  # - url: "search.volunteerscotland.net/*"
+  #   service: default
+  # - url: "*.saltireawards.org.uk/*"
+  #   service: default
+  # - url: "sdgadvocate.org/*"
+  #   service: default
+  # - url: "mpowerhealth.eu/*"
+  #   service: default
+  # - url: "*.mpowerhealth.eu/*"
+  #   service: default
+  # - url: "*.thirdforcenews.scot/*"
+  #   service: default
