@@ -304,6 +304,30 @@ function createTaskModules(): Map<any> {
         bold: Path.resolve(__dirname, '../fonts/Roboto-Medium.ttf'),
         italics: Path.resolve(__dirname, '../fonts/Roboto-Italic.ttf'),
         bolditalics: Path.resolve(__dirname, '../fonts/Roboto-MediumItalic.ttf')
+      },
+      Montserrat: {
+        thin: Path.resolve(__dirname, '../fonts/Montserrat-Thin.ttf'),
+        extralight: Path.resolve(__dirname, '../fonts/Montserrat-ExtraLight.ttf'),
+        light: Path.resolve(__dirname, '../fonts/Montserrat-Light.ttf'),
+        normal: Path.resolve(__dirname, '../fonts/Montserrat-Regular.ttf'),
+        medium: Path.resolve(__dirname, '../fonts/Montserrat-Medium.ttf'),
+        semibold: Path.resolve(__dirname, '../fonts/Montserrat-SemiBold.ttf'),
+        bold: Path.resolve(__dirname, '../fonts/Montserrat-Bold.ttf'),
+        extrabold: Path.resolve(__dirname, '../fonts/Montserrat-ExtraBold.ttf'),
+        black: Path.resolve(__dirname, '../fonts/Montserrat-Black.ttf'),
+        thinitalics: Path.resolve(__dirname, '../fonts/Montserrat-ThinItalic.ttf'),
+        extralightitalics: Path.resolve(__dirname, '../fonts/Montserrat-ExtraLightItalic.ttf'),
+        lightitalics: Path.resolve(__dirname, '../fonts/Montserrat-LightItalic.ttf'),
+        normalitalics: Path.resolve(__dirname, '../fonts/Montserrat-Italic.ttf'),
+        mediumitalics: Path.resolve(__dirname, '../fonts/Montserrat-MediumItalic.ttf'),
+        semibolditalics: Path.resolve(__dirname, '../fonts/Montserrat-SemiBoldItalic.ttf'),
+        bolditalics: Path.resolve(__dirname, '../fonts/Montserrat-BoldItalic.ttf'),
+        extrabolditalics: Path.resolve(__dirname, '../fonts/Montserrat-ExtraBoldItalic.ttf'),
+        blackitalics: Path.resolve(__dirname, '../fonts/Montserrat-BlackItalic.ttf')
+      },
+      "Sonder-Sans3": {
+        normal: Path.resolve(__dirname, '../fonts/Sonder-Sans3.ttf'),
+        bold: Path.resolve(__dirname, '../fonts/Sonder-Sans3.ttf')
       }
     }),
     transform: new TaskTransform({ querystring: Querystring, url: Url }),
@@ -423,7 +447,7 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
 
     const userAgent = request.headers['user-agent'] || '';
     const appEngine = userAgent.toLowerCase().indexOf('appengine') > -1
-    
+
     // If the request is not secure, redirect to HTTPS url generated above
     if (secure === false && !appEngine) {
       response.statusCode = 301;
