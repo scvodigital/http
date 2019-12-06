@@ -2692,9 +2692,9 @@ json-6@^1.0.2:
   resolved "https://registry.yarnpkg.com/json-6/-/json-6-1.0.2.tgz#efb0324395c6170b5543ab1e1cd699277a8f7983"
   integrity sha512-2LOtbWHnCRCYOjnuPtJLp2uZO+KmJoBk96yDRMsop+Kb3B4JqbPdEScYxImxcQ20N6a8VOtuKUo8ElHptc80kw==
 
-"json-e@git+https://github.com/scvodigital/json-e.git":
+"json-e@https://github.com/scvodigital/json-e":
   version "3.0.0"
-  resolved "git+https://github.com/scvodigital/json-e.git#f7741d6e4417b781f765a5398fff00eef3027929"
+  resolved "https://github.com/scvodigital/json-e#f7741d6e4417b781f765a5398fff00eef3027929"
   dependencies:
     json-stable-stringify "^1.0.1"
 

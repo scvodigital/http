@@ -325,6 +325,9 @@ function createTaskModules(): Map<any> {
         extrabolditalics: Path.resolve(__dirname, '../fonts/Montserrat-ExtraBoldItalic.ttf'),
         blackitalics: Path.resolve(__dirname, '../fonts/Montserrat-BlackItalic.ttf')
       },
+      "Consolas": {
+        normal: Path.resolve(__dirname, '../fonts/Consolas.ttf')
+      },
       "Sonder-Sans3": {
         normal: Path.resolve(__dirname, '../fonts/Sonder-Sans3.ttf'),
         bold: Path.resolve(__dirname, '../fonts/Sonder-Sans3.ttf')
