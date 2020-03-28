@@ -4,7 +4,7 @@ runtime: nodejs
 
 automatic_scaling:
   min_num_instances: 2
-  max_num_instances: 5
+  max_num_instances: 8
   cpu_utilization:
     target_utilization: 0.5
 
@@ -16,8 +16,8 @@ network:
   name: default
 
 resources:
-  cpu: 1
-  memory_gb: 1.75
+  cpu: 2
+  memory_gb: 3
   disk_size_gb: 10
 
 readiness_check:
