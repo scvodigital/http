@@ -1033,6 +1033,21 @@ export class Helpers {
         return args.fn(context);
       }
 
+      static helper_urldecode(input: string) {
+        if (typeof input !== 'string') return '';
+        return decodeURI(input);
+      }
+
+      static helper_urlencodeComponent(input: string) {
+        if (typeof input !== 'string') return '';
+        return encodeURIComponent(input);
+      }
+
+      static helper_urldecodeComponent(input: string) {
+        if (typeof input !== 'string') return '';
+        return decodeURIComponent(input);
+      }
+
       static helper_sortByIndex(items: any[], index: any[], property: string) {
         if (!Array.isArray(items) || !Array.isArray(index) || typeof property !== 'string') {
           return items;
