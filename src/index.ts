@@ -451,6 +451,14 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     const userAgent = request.headers['user-agent'] || '';
     const appEngine = userAgent.toLowerCase().indexOf('appengine') > -1
 
+    let clientIp = request.connection.remoteAddress || request.socket.remoteAddress || '0.0.0.0';
+
+    if (Array.isArray(request.headers['x-forwarded-for'])) {
+      clientIp = request.headers['x-forwarded-for'][0] || clientIp;
+    } else if (typeof request.headers['x-forwarded-for'] === 'string') {
+      clientIp = request.headers['x-forwarded-for'] || clientIp;
+    }
+
     // If the request is not secure, redirect to HTTPS url generated above
     if (secure === false && !appEngine) {
       response.statusCode = 301;
@@ -467,14 +475,15 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     const incomingBody = await getBody(request);
 
     // Create our router request
-    const routerRequest: RouterRequest = {
+    const routerRequest: RouterRequest & { clientIp: string } = {
       headers: request.headers || {},
       verb: (request.method as HttpVerb),
       fullUrl: fullUrl,
       url: url,
       body: incomingBody,
       cookies: request.headers.cookie && Cookie.parse(request.headers.cookie as string) || {},
-      params: url.query
+      params: url.query,
+      clientIp
     };
 
     // Call the router with our request
