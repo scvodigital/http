@@ -551,7 +551,6 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
       response.setHeader('Access-Control-Request-Method', '*');
       response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
       response.setHeader('Access-Control-Allow-Headers', '*');
-      response.setHeader('Content-Type', 'text/html; charset=utf-8');
     }
 
     // Send our HTTP response with the GZipped buffer
