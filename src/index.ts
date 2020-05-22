@@ -546,10 +546,10 @@ const routerRequestHandler = async (request: Http.IncomingMessage, response: Htt
     response.statusCode = routerResponse.statusCode || 200;
 
     //HACK: Replace this with Task Module for modifying headers
-    if (fullUrl.includes('widget') || fullUrl.includes('geo-lookup')) {
+    if (fullUrl.includes('widget') || fullUrl.includes('geo-lookup') || fullUrl.includes('proxy')) {
       response.setHeader('Access-Control-Allow-Origin', '*');
       response.setHeader('Access-Control-Request-Method', '*');
-      response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+      response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
       response.setHeader('Access-Control-Allow-Headers', '*');
       response.setHeader('Content-Type', 'text/html; charset=utf-8');
     }
