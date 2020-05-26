@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "The HTTP entry point to the SCVO Router",
   "main": "build/index.js",
-  "scripts": { 
+  "scripts": {
     "test": "echo \"Error: no test specified\"",
     "start": "npm run build; node build/index.js",
     "dev": "npm run build && node --inspect build/index.js",
