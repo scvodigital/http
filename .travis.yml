@@ -16,7 +16,7 @@ before_install:
   - tar xvf secrets.tar
 
 install:
-  - npm ci
+  - npm i
   - npm run build
 
 before_deploy:
