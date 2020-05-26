@@ -7,7 +7,7 @@ branches:
   - production
 
 cache:
-  yarn: true
+  yarn: false
   directories:
   - "$HOME/google-cloud-sdk/"
 
