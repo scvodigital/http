@@ -16,7 +16,7 @@ before_install:
   - tar xvf secrets.tar
 
 install:
-  - yarn
+  - npm ci
   - npm run build
 
 before_deploy:
