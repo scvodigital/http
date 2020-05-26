@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10.16.3"
+  - "10.16.0"
 
 branches:
   only:
@@ -16,7 +16,7 @@ before_install:
   - tar xvf secrets.tar
 
 install:
-  - npm i
+  - yarn
   - npm run build
 
 before_deploy:
