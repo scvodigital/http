@@ -13,6 +13,7 @@ const crypto = require('crypto');
 import * as Url from 'url';
 import * as util from 'util';
 import * as dateMath from '@elastic/datemath';
+import * as MathJS from 'mathjs';
 const JSON6: any = require('json-6');
 
 /* tslint:disable */
@@ -330,6 +331,24 @@ export class Helpers {
     return obj;
   }
 
+  static helper_maths(expression: string) {
+    try {
+      if (typeof expression !== 'string') {
+        throw new Error('Invalid arguments, the first argument must be a string');
+      }
+
+      const args = Array.from(arguments);
+      const helper: IHelperArgs = args.pop();
+
+      console.log('Expression:', expression);
+      const output = MathJS.evaluate(expression, helper.hash || this);
+
+      return output;
+    } catch (err) {
+      console.error('Handlebars Helper Error -> Helper: maths, Error:', err.message);
+      return 0;
+    }
+  }
 
   static helper_eachJoin(input: any[], separator: string, options: any) {
     var items: string[] = [];
@@ -1168,6 +1187,13 @@ export class Helpers {
           return '';
         }
       }
+    }
+
+    export function isOps(obj: any) {
+      return !!obj &&
+        obj.hasOwnProperty('hash') &&
+        obj.hasOwnProperty('data') &&
+        obj.hasOwnProperty('name');
     }
 
     export interface IHelperArgs {
