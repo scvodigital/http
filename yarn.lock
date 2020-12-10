@@ -366,6 +366,13 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
+"@types/moment-timezone@^0.5.13":
+  version "0.5.30"
+  resolved "https://registry.yarnpkg.com/@types/moment-timezone/-/moment-timezone-0.5.30.tgz#340ed45fe3e715f4a011f5cfceb7cb52aad46fc7"
+  integrity sha512-aDVfCsjYnAQaV/E9Qc24C5Njx1CoDjXsEgkxtp9NyXDpYu4CCbmclb6QhWloS9UTU/8YROUEEdEkWI0D7DxnKg==
+  dependencies:
+    moment-timezone "*"
+
 "@types/mysql@^2.15.5":
   version "2.15.12"
   resolved "https://registry.yarnpkg.com/@types/mysql/-/mysql-2.15.12.tgz#93c18b7941286a4dd850b5838eea486c570ec498"
@@ -1413,9 +1420,9 @@ dot-object@^1.7.0, dot-object@^1.8.1:
     glob "^7.1.4"
 
 dot-prop@^4.1.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-4.2.0.tgz#1f19e0c2e1aa0e32797c49799f2837ac6af69c57"
-  integrity sha512-tUMXrxlExSW6U2EXiiKGSBVdYgtV8qlHL+C10TsW4PURY/ic+eaysnSkwB4kA/mBlCyy/IKDJ+Lc3wbWeaXtuQ==
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-4.2.1.tgz#45884194a71fc2cda71cbb4bceb3a4dd2f433ba4"
+  integrity sha512-l0p4+mIuJIua0mhxGoh4a+iNL9bmeK5DvnSVQa6T0OhrVmaEa1XScX5Etc673FePCJOArq/4Pa2cLGODUWTPOQ==
   dependencies:
     is-obj "^1.0.0"
 
@@ -3153,6 +3160,13 @@ modelo@^4.2.0:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/modelo/-/modelo-4.2.3.tgz#b278588a4db87fc1e5107ae3a277c0876f38d894"
   integrity sha512-9DITV2YEMcw7XojdfvGl3gDD8J9QjZTJ7ZOUuSAkP+F3T6rDbzMJuPktxptsdHYEvZcmXrCD3LMOhdSAEq6zKA==
+
+moment-timezone@*:
+  version "0.5.32"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.32.tgz#db7677cc3cc680fd30303ebd90b0da1ca0dfecc2"
+  integrity sha512-Z8QNyuQHQAmWucp8Knmgei8YNo28aLjJq6Ma+jy1ZSpSk5nyfRT8xgUbSQvD2+2UajISfenndwvFuH3NGS+nvA==
+  dependencies:
+    moment ">= 2.9.0"
 
 moment-timezone@^0.5.25:
   version "0.5.31"
