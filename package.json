@@ -55,7 +55,7 @@
     "firebase-admin": "6.1.0",
     "get-body": "^1.0.3",
     "globby": "^8.0.1",
-    "handlebars": "4.1.2",
+    "handlebars": "4.7.7",
     "is-gzip": "^2.0.0",
     "json-6": "^1.0.2",
     "json-stringify-safe": "^5.0.1",
