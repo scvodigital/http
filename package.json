@@ -64,7 +64,7 @@
     "mathjs": "^7.0.0",
     "mime": "^2.3.1",
     "moment": "^2.22.2",
-    "moment-timezone": "^0.5.32",
+    "moment-timezone": "^0.5.35",
     "pako": "^1.0.6",
     "source-map-support": "^0.5.9",
     "string": "^3.3.3",
