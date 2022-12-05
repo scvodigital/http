@@ -62,7 +62,6 @@ const SITES_GLOB: string = Path.join(CONFIG.localSitesDir, '*/build/config.json'
  * @region
  */
 
-
 /**
  * START: Global variables
  * @region
