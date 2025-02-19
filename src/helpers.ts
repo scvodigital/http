@@ -1,6 +1,6 @@
 import arrDiff = require('arr-diff');
 const deepDiff: any = require('deep-diff');
-import stripHtml = require('string-strip-html');
+import stripHtml = require('striptags');
 import markdown = require('markdown');
 const sqlstring: any = require('sqlstring');
 import stringify = require('json-stringify-safe');

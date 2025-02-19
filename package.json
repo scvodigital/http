@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "The HTTP entry point to the SCVO Router",
   "main": "build/index.js",
+  "engines": {
+    "node": "18"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "start": "npm run build; node build/index.js",
@@ -34,7 +37,7 @@
   "dependencies": {
     "@elastic/datemath": "^4.0.2",
     "@scvo/json-inc": "^0.0.15",
-    "@scvo/router": "1.2.89",
+    "@scvo/router": "1.2.90",
     "@types/chokidar": "^1.7.5",
     "@types/cookie": "^0.3.1",
     "@types/globby": "^8.0.0",
@@ -64,14 +67,12 @@
     "mathjs": "^7.0.0",
     "mime": "^2.3.1",
     "moment": "^2.22.2",
-    "moment-timezone": "^0.5.25",
+    "moment-timezone": "^0.5.32",
     "pako": "^1.0.6",
     "source-map-support": "^0.5.9",
     "string": "^3.3.3",
-    "string-strip-html": "^3.2.0",
+    "striptags": "^3.2.0",
     "typescript": "^3.1.3"
   },
-  "devDependencies": {
-    "@types/moment-timezone": "^0.5.13"
-  }
+  "devDependencies": {}
 }

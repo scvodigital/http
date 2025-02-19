@@ -62,7 +62,6 @@ const SITES_GLOB: string = Path.join(CONFIG.localSitesDir, '*/build/config.json'
  * @region
  */
 
-
 /**
  * START: Global variables
  * @region
@@ -400,6 +399,13 @@ const assetsRequestHandler = async (request: Http.IncomingMessage, response: Htt
     if (gzipped) {
       head['Content-Encoding'] = 'gzip';
     }
+
+    //if ('scvo-proxy' in request.headers) {
+      response.setHeader('Access-Control-Allow-Origin', '*');
+      response.setHeader('Access-Control-Request-Method', '*');
+      response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
+      response.setHeader('Access-Control-Allow-Headers', '*');
+    //}
 
     // Send the headers
     response.writeHead(200, head);
