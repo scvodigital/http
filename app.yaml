@@ -2,6 +2,10 @@ service: default
 env: flex
 runtime: nodejs
 
+runtime_config:
+  operating_system: "ubuntu22"
+  runtime_version: "18"
+
 automatic_scaling:
   min_num_instances: 2
   max_num_instances: 8
@@ -34,4 +38,3 @@ liveness_check:
   timeout_sec: 4
   failure_threshold: 2
   success_threshold: 2
-  

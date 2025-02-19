@@ -219,10 +219,10 @@
     glob "^7.1.2"
     glob-promise "^3.4.0"
 
-"@scvo/router@1.2.89":
-  version "1.2.89"
-  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.89.tgz#032cc2fa26ff6d5f702bea68e54e47f6ee2b2630"
-  integrity sha512-ngw0C4hp9SPY3+wk52bT1aRMCX7nkkVVxHbnPSA4RxAtXjNj+U2udjyHnmX4pwO8Cb+v4PrrB2TXBB1rdm4FTQ==
+"@scvo/router@1.2.90":
+  version "1.2.90"
+  resolved "https://registry.yarnpkg.com/@scvo/router/-/router-1.2.90.tgz#87520397e2e5c56ace31d18c916fcc9863aeafde"
+  integrity sha512-EnhiYUD8NilvPUEYYqPB0aMrNuMzbTxwCcmLQwO5vaPpRbUif0qCdrWzH8BCuLBGjfL4NWx6/M+DYfRZZeBc7w==
   dependencies:
     "@types/elasticsearch" "^5.0.24"
     "@types/mysql" "^2.15.5"
@@ -2681,9 +2681,9 @@ json-6@^1.0.2:
   resolved "https://registry.yarnpkg.com/json-6/-/json-6-1.0.6.tgz#11b922134b8c9504c3ddd622190fce5024a9e0a7"
   integrity sha512-USwCYQXR7uhl3El3stkcDipg5P+ja+v6QjgwwcoLAzNB0e7BzWA9sheljqKTIjwOgqa/rsWZDMtRau63thvpgQ==
 
-"json-e@https://github.com/scvodigital/json-e":
+"json-e@git+https://github.com/scvodigital/json-e.git":
   version "3.0.0"
-  resolved "https://github.com/scvodigital/json-e#f7741d6e4417b781f765a5398fff00eef3027929"
+  resolved "git+https://github.com/scvodigital/json-e.git#f7741d6e4417b781f765a5398fff00eef3027929"
   dependencies:
     json-stable-stringify "^1.0.1"
 
