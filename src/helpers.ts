@@ -345,7 +345,8 @@ export class Helpers {
 
       return output;
     } catch (err) {
-      console.error('Handlebars Helper Error -> Helper: maths, Error:', err.message);
+      if (err instanceof Error)
+        console.error('Handlebars Helper Error -> Helper: maths, Error:', err.message);
       return 0;
     }
   }
