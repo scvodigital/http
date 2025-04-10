@@ -4,7 +4,7 @@
   "description": "The HTTP entry point to the SCVO Router",
   "main": "build/index.js",
   "engines": {
-    "node": "18"
+    "node": "22"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\"",
