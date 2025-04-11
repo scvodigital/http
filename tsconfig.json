@@ -6,6 +6,7 @@
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["es2017"],
+    "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true,
     "noImplicitReturns": true,
@@ -17,12 +18,14 @@
     "rootDir": "src",
     "outDir": "build",
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "src/typings"
     ],
     "baseUrl": ".",
     "paths": {
       "@scvo/router": [ "./node_modules/@scvo/router" ]
-    }
+    },
+    "types": ["node"]
   },
   "include": [
     "src/*.ts",

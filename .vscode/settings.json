@@ -1,4 +1,7 @@
 {
   "deno.enable": false,
-  "cSpell.logLevel": "Information"
+  "cSpell.logLevel": "Information",
+  "cSpell.words": [
+    "vlasky"
+  ]
 }

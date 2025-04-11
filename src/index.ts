@@ -255,7 +255,8 @@ async function reloadRouters() {
 
     console.log('Routers reloaded:', domainMap);
   } catch(err) {
-    throw new Error('Failed to reload routers', err);
+    if (err instanceof Error)
+      throw new Error('Failed to reload routers', err);
   }
 }
 

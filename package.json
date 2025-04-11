@@ -4,7 +4,7 @@
   "description": "The HTTP entry point to the SCVO Router",
   "main": "build/index.js",
   "engines": {
-    "node": "18"
+    "node": "22"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\"",
@@ -37,17 +37,17 @@
   "dependencies": {
     "@elastic/datemath": "^4.0.2",
     "@scvo/json-inc": "^0.0.15",
-    "@scvo/router": "^1.2.93",
+    "@scvo/router": "1.2.95",
     "@types/chokidar": "^1.7.5",
     "@types/cookie": "^0.3.1",
     "@types/globby": "^8.0.0",
-    "@types/jsforce": "^1.9.1",
     "@types/json-stringify-safe": "^5.0.0",
     "@types/jsonata": "^1.3.1",
     "@types/mathjs": "^6.0.5",
     "@types/mime": "^2.0.0",
     "@types/node": "^10.11.7",
     "@types/pako": "^1.0.0",
+    "@vlasky/mysql": "^2.18.6",
     "arr-diff": "^4.0.0",
     "bristles": "0.0.16",
     "chokidar": "^2.0.4",
@@ -72,7 +72,11 @@
     "pako": "^1.0.6",
     "source-map-support": "^0.5.9",
     "string": "^3.3.3",
-    "striptags": "^3.2.0",
-    "typescript": "^3.1.3"
+    "striptags": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/jsforce": "^1.11.5",
+    "@types/mysql": "^2.15.27",
+    "typescript": "^5.3.3"
   }
 }
