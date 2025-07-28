@@ -2975,7 +2975,18 @@ json-6@^1.0.2:
 
 "json-e@git+https://github.com/scvodigital/json-e", "json-e@git+https://github.com/scvodigital/json-e.git":
   version "3.0.0"
+<<<<<<< HEAD
   resolved "git+ssh://git@github.com/scvodigital/json-e.git#f7741d6e4417b781f765a5398fff00eef3027929"
+=======
+  uid f7741d6e4417b781f765a5398fff00eef3027929
+  resolved "git+https://github.com/scvodigital/json-e#f7741d6e4417b781f765a5398fff00eef3027929"
+  dependencies:
+    json-stable-stringify "^1.0.1"
+
+"json-e@https://github.com/scvodigital/json-e":
+  version "3.0.0"
+  resolved "https://github.com/scvodigital/json-e#f7741d6e4417b781f765a5398fff00eef3027929"
+>>>>>>> 1b7a544fbbfa1f3a868b5f44f7685dc3854200d1
   dependencies:
     json-stable-stringify "^1.0.1"
 
