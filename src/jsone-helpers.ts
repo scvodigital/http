@@ -12,7 +12,7 @@ export const JsoneHelpers = {
   },
   numberFormat: (value: number, style: string = 'currency', locale: string = 'en-GB', currency: string = 'GBP'): string => {
     return value.toLocaleString(locale, {
-      style: style,
+      style: style as any,
       currency: currency
     });
   },
