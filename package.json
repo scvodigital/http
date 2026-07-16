@@ -13,7 +13,7 @@
     "deploy-dispatch": "gcloud app deploy dispatch.yaml",
     "build": "npm run build-clean && npm run build-typescript",
     "build-clean": "rm -rf build && mkdir build",
-    "build-typescript": "./node_modules/.bin/tsc",
+    "build-typescript": "tsc",
     "test-router": "cd ../scvo-router; npm run compile; cd ../http; npm add ../scvo-router; npm run dev",
     "push-to-prod": "git checkout production && git pull && git pull && git pull origin development && git push && git checkout development"
   },
@@ -72,9 +72,7 @@
     "pako": "^1.0.6",
     "source-map-support": "^0.5.9",
     "string": "^3.3.3",
-    "striptags": "^3.2.0"
-  },
-  "devDependencies": {
+    "striptags": "^3.2.0",
     "@types/jsforce": "^1.11.5",
     "@types/mysql": "^2.15.27",
     "typescript": "^5.3.3"
