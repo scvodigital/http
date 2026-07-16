@@ -14,7 +14,7 @@
     "build": "npm run build-clean && npm run build-typescript",
     "build-clean": "rm -rf build && mkdir build",
     "build-typescript": "./node_modules/.bin/tsc",
-    "test-router": "cd ../scvo-router; npm run compile; cd ../http; yarn add ../scvo-router; npm run dev",
+    "test-router": "cd ../scvo-router; npm run compile; cd ../http; npm add ../scvo-router; npm run dev",
     "push-to-prod": "git checkout production && git pull && git pull && git pull origin development && git push && git checkout development"
   },
   "repository": {
